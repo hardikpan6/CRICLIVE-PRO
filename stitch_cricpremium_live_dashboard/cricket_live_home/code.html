@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cricket Live - News &amp; Scores</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ffb4ab",
+                        "surface": "#10131a",
+                        "inverse-on-surface": "#2e3037",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#00210a",
+                        "tertiary-fixed": "#8ef9a4",
+                        "primary-container": "#00529b",
+                        "on-primary-fixed-variant": "#004787",
+                        "surface-container-highest": "#32353c",
+                        "secondary-container": "#fecc00",
+                        "primary": "#a6c8ff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#70db89",
+                        "on-secondary-container": "#6e5700",
+                        "on-tertiary-fixed-variant": "#005324",
+                        "tertiary-container": "#005f2a",
+                        "surface-bright": "#363940",
+                        "tertiary-fixed-dim": "#71dc8a",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "secondary": "#ffecbf",
+                        "surface-container-lowest": "#0b0e14",
+                        "on-background": "#e1e2eb",
+                        "inverse-primary": "#1d5fa8",
+                        "on-primary-container": "#a5c7ff",
+                        "on-surface-variant": "#c2c6d3",
+                        "error-container": "#93000a",
+                        "surface-variant": "#32353c",
+                        "inverse-surface": "#e1e2eb",
+                        "surface-dim": "#10131a",
+                        "on-primary": "#003060",
+                        "primary-fixed": "#d5e3ff",
+                        "secondary-fixed": "#ffe089",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-tint": "#a6c8ff",
+                        "on-tertiary": "#003916",
+                        "background": "#10131a",
+                        "secondary-fixed-dim": "#f0c100",
+                        "tertiary": "#71dc8a",
+                        "on-surface": "#e1e2eb",
+                        "outline-variant": "#424751",
+                        "surface-container": "#1d2026",
+                        "outline": "#8c919c",
+                        "surface-container-high": "#272a31",
+                        "surface-container-low": "#191c22",
+                        "on-primary-fixed": "#001c3b",
+                        "on-secondary": "#3d2f00"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "container-max-width": "1280px",
+                        "gutter": "16px",
+                        "unit": "4px"
+                    },
+                    fontFamily: {
+                        "label-caps": ["Inter"],
+                        "score-display-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "score-display": ["Montserrat"],
+                        "headline-md": ["Montserrat"]
+                    },
+                    fontSize: {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "score-display-mobile": ["36px", { "lineHeight": "1", "fontWeight": "800" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "score-display": ["48px", { "lineHeight": "1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .live-glow {
+            filter: drop-shadow(0 0 4px #ffb4ab);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg text-body-lg min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-surface/80 border-b border-outline-variant/30 shadow-2xl">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max-width mx-auto">
+<div class="font-headline-lg text-headline-lg font-extrabold text-primary dark:text-primary-fixed-dim italic tracking-tighter">
+                CRICKET LIVE
+            </div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-primary pb-1 font-label-caps text-label-caps uppercase transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-colors duration-200" href="#">Live Scores</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-colors duration-200" href="#">Matches</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-colors duration-200" href="#">Teams</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps uppercase transition-colors duration-200" href="#">News</a>
+</nav>
+<div class="flex gap-4 items-center">
+<button class="text-on-surface hover:bg-surface-bright/10 transition-colors duration-200 p-2 rounded-full scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface hover:bg-surface-bright/10 transition-colors duration-200 p-2 rounded-full scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="text-on-surface hover:bg-surface-bright/10 transition-colors duration-200 p-2 rounded-full scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20 px-gutter max-w-container-max-width mx-auto">
+<!-- Live Scores Ticker -->
+<section class="mb-8 overflow-x-auto scrollbar-hide py-2">
+<div class="flex gap-4 min-w-max">
+<!-- Score Card 1 -->
+<div class="glass-card rounded-lg p-3 flex flex-col gap-2 min-w-[250px] cursor-pointer hover:bg-surface-bright/20 transition-colors">
+<div class="flex justify-between items-center font-label-caps text-label-caps text-on-surface-variant">
+<span>1ST TEST, PERTH</span>
+<span class="text-error font-bold flex items-center gap-1 live-glow"><span class="w-2 h-2 rounded-full bg-error inline-block animate-pulse"></span>LIVE</span>
+</div>
+<div class="flex justify-between font-data-mono text-data-mono">
+<span>IND</span>
+<span>324/4 (82.1)</span>
+</div>
+<div class="flex justify-between font-data-mono text-data-mono">
+<span>AUS</span>
+<span>Yet to bat</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">Kohli 124*, Pant 45*</div>
+</div>
+<!-- Score Card 2 -->
+<div class="glass-card rounded-lg p-3 flex flex-col gap-2 min-w-[250px] cursor-pointer hover:bg-surface-bright/20 transition-colors">
+<div class="flex justify-between items-center font-label-caps text-label-caps text-on-surface-variant">
+<span>3RD ODI, CAPE TOWN</span>
+<span class="text-secondary font-bold">STUMPS</span>
+</div>
+<div class="flex justify-between font-data-mono text-data-mono">
+<span>SA</span>
+<span>289/8 (50.0)</span>
+</div>
+<div class="flex justify-between font-data-mono text-data-mono text-on-surface-variant">
+<span>ENG</span>
+<span>256/10 (48.3)</span>
+</div>
+<div class="font-body-sm text-body-sm text-primary truncate">SA won by 33 runs</div>
+</div>
+<!-- Score Card 3 -->
+<div class="glass-card rounded-lg p-3 flex flex-col gap-2 min-w-[250px] cursor-pointer hover:bg-surface-bright/20 transition-colors">
+<div class="flex justify-between items-center font-label-caps text-label-caps text-on-surface-variant">
+<span>T20 WC, BARBADOS</span>
+<span class="text-tertiary font-bold">UPCOMING</span>
+</div>
+<div class="flex justify-between font-data-mono text-data-mono">
+<span>WI</span>
+<span>-</span>
+</div>
+<div class="flex justify-between font-data-mono text-data-mono">
+<span>NZ</span>
+<span>-</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">Match starts in 2h 30m</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left/Main Column -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Hero Section: Featured Match -->
+<section class="glass-card rounded-xl overflow-hidden relative min-h-[400px] flex flex-col justify-end p-6">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-50 mix-blend-overlay" data-alt="A dynamic action shot of a cricket match under stadium lights at night. A batsman in India blue is hitting a powerful shot against an Australian bowler in gold. The stadium is packed, creating a tense, high-stakes atmosphere. High-contrast, cinematic lighting, shot from a low angle on the boundary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbMmmKMZgDuvhfPdhCVyBdxbJSpvNoGf41fv3E-VYn0q8M0dj5Qd01ov3Hea28byG9Og_8a8ZaTjqIBbLtL7tPytdpl7lvHwDDiPcrUKxHTKjRrbybuSDqxPnfvXt7TKCwHiqDx38wxOLzndMylz3dtg7dNKCiPRf-DO0XzBmtkbHuniDdK1T2pfE6zSRgb9JKimsGS-5TSUaEXDXAtJ3jlC0LIIA-QHi8_Dm7_KsbToIYJUmMGayz-g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="bg-error text-on-error px-2 py-1 rounded text-xs font-bold tracking-widest live-glow">LIVE</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">BORDER-GAVASKAR TROPHY • DAY 1</span>
+</div>
+<div class="flex justify-between items-end border-b border-white/10 pb-4">
+<div>
+<div class="flex items-center gap-4 mb-2">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center font-bold text-on-primary-container">IN</div>
+<h2 class="font-score-display text-score-display">324<span class="text-headline-lg font-headline-lg text-on-surface-variant">/4</span></h2>
+</div>
+<div class="font-data-mono text-data-mono text-on-surface-variant">82.1 Overs • RR: 3.94</div>
+</div>
+<div class="text-right opacity-50">
+<div class="flex items-center justify-end gap-4 mb-2">
+<h2 class="font-score-display text-score-display text-on-surface-variant">0<span class="text-headline-lg font-headline-lg">/0</span></h2>
+<div class="w-8 h-8 rounded bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">AU</div>
+</div>
+<div class="font-data-mono text-data-mono">Yet to bat</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div class="flex gap-6">
+<div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">V Kohli</div>
+<div class="font-data-mono text-data-mono text-primary">124* (185)</div>
+</div>
+<div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">R Pant</div>
+<div class="font-data-mono text-data-mono text-primary">45* (32)</div>
+</div>
+<div class="hidden sm:block border-l border-white/10 pl-6">
+<div class="font-body-sm text-body-sm text-on-surface-variant">P Cummins</div>
+<div class="font-data-mono text-data-mono">18.1-4-56-2</div>
+</div>
+</div>
+<button class="bg-primary-container hover:bg-primary-container/80 text-on-primary-container px-6 py-2 rounded font-label-caps text-label-caps uppercase transition-colors shadow-[inset_0_0_10px_rgba(255,255,255,0.1)]">
+                                Watch Live
+                            </button>
+</div>
+</div>
+</section>
+<!-- Trending News Grid -->
+<section>
+<h3 class="font-headline-md text-headline-md mb-4 border-l-4 border-primary pl-3">Trending Stories</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<article class="glass-card rounded-lg overflow-hidden group cursor-pointer">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close up portrait of a serious cricket captain looking determined during a press conference. Dark background, harsh spotlight, professional sports photography style, high resolution, dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACbzE_UBq5H7YzK0dtyKnCDOF3vhOb5mDGjhymUxuNAb5bfhFn7ohdMCYtqWJYjCtfRuBy7-SYyIspNPXaxWSNv1dIqPUvugg_sCtjbuhrVfbjG4qMxBmvQSBAfeifg_y_gXw3mC8Pl9ciTGM8i-yVZVNXJGpfsNEv1ibujPFeEfypo87YJtKr73y4M-DRn4DZKBCum8h5rFMImLJ-3vkAvX_eSUpf08abw-YEIg5e_MPSPsB-JAHq1g"/>
+<div class="absolute bottom-2 left-2 bg-surface/80 backdrop-blur px-2 py-1 rounded font-label-caps text-label-caps text-primary text-[10px]">ANALYSIS</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="font-headline-sm text-headline-md group-hover:text-primary transition-colors">Tactical breakdown: How India nullified the short ball threat in Perth</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Expert insights into the technical adjustments made by the top order against genuine pace and bounce on a fiery Optus Stadium pitch.</p>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-2 text-[10px]">2 HOURS AGO</span>
+</div>
+</article>
+<article class="glass-card rounded-lg overflow-hidden group cursor-pointer">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A cricket bowler in mid-action, releasing the ball. Blurred background indicating speed and motion. Evening light, sharp focus on the bowler's face and arm. High contrast, dark cinematic tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfwW7Yd0gOpD1RbsFCqoaNmt5Um9P59HOoX3AJJc-IOZfjJGgJSQuXlNSMQshYhNxmLTJjkNL_ccsq39E73WuY5A866yDnb-ONH9IYFDGDowdtv94rsqHgiDCw8sfhD35diFkvPLA5wIrdGqdLMgzt-Pz1E1P4sh2sWW0_eOGNejrAnKnZj-_ubg9DW0kEirD6Wcnt9KGzH1LFZ-bc2rDB0Kyoo9XLka_VcUpdQ4WjP0vdvKzjDKepOQ"/>
+<div class="absolute bottom-2 left-2 bg-surface/80 backdrop-blur px-2 py-1 rounded font-label-caps text-label-caps text-tertiary text-[10px]">INJURY UPDATE</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<h4 class="font-headline-sm text-headline-md group-hover:text-primary transition-colors">Key pacer ruled out of remainder of the series with side strain</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Scans reveal a grade 2 tear, forcing a major reshuffle in the bowling attack ahead of the crucial second test in Adelaide.</p>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-2 text-[10px]">5 HOURS AGO</span>
+</div>
+</article>
+</div>
+</section>
+</div>
+<!-- Right/Sidebar Column -->
+<aside class="lg:col-span-4 flex flex-col gap-8">
+<!-- Match Center Widget -->
+<div class="glass-card rounded-xl p-6">
+<h3 class="font-headline-md text-headline-md mb-4 border-b border-white/10 pb-2">Upcoming Series</h3>
+<div class="flex flex-col gap-4">
+<div class="p-3 rounded-lg bg-surface-container-high hover:bg-surface-bright/20 transition-colors cursor-pointer border border-transparent hover:border-white/10">
+<div class="font-label-caps text-label-caps text-primary mb-1">NOV 22 - JAN 07</div>
+<div class="font-body-lg text-body-lg font-bold">Border-Gavaskar Trophy</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">5 Tests • Australia</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-high hover:bg-surface-bright/20 transition-colors cursor-pointer border border-transparent hover:border-white/10">
+<div class="font-label-caps text-label-caps text-secondary mb-1">JAN 12 - FEB 04</div>
+<div class="font-body-lg text-body-lg font-bold">SA20 League Season 3</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">T20 Franchise • South Africa</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-high hover:bg-surface-bright/20 transition-colors cursor-pointer border border-transparent hover:border-white/10">
+<div class="font-label-caps text-label-caps text-tertiary mb-1">MAR 22 - MAY 26</div>
+<div class="font-body-lg text-body-lg font-bold">Indian Premier League 2024</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">T20 Franchise • India</div>
+</div>
+</div>
+</div>
+<!-- Stats Snippet -->
+<div class="glass-card rounded-xl p-6 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-[120px] opacity-5 select-none font-bold">WTC</div>
+<h3 class="font-headline-md text-headline-md mb-4 relative z-10">WTC Points Table</h3>
+<div class="w-full relative z-10">
+<div class="grid grid-cols-4 gap-2 font-label-caps text-label-caps text-on-surface-variant border-b border-white/10 pb-2 mb-2">
+<div class="col-span-2">TEAM</div>
+<div class="text-right">PCT</div>
+<div class="text-right">PTS</div>
+</div>
+<div class="flex flex-col gap-2 font-data-mono text-data-mono">
+<div class="grid grid-cols-4 gap-2 items-center bg-surface-bright/10 p-2 rounded">
+<div class="col-span-2 flex items-center gap-2"><span class="w-4 h-4 rounded-sm bg-primary-container inline-block"></span> IND</div>
+<div class="text-right text-primary">68.51</div>
+<div class="text-right">98</div>
+</div>
+<div class="grid grid-cols-4 gap-2 items-center p-2 rounded">
+<div class="col-span-2 flex items-center gap-2"><span class="w-4 h-4 rounded-sm bg-secondary-container inline-block"></span> AUS</div>
+<div class="text-right text-primary">62.50</div>
+<div class="text-right">90</div>
+</div>
+<div class="grid grid-cols-4 gap-2 items-center p-2 rounded">
+<div class="col-span-2 flex items-center gap-2"><span class="w-4 h-4 rounded-sm bg-gray-600 inline-block"></span> NZ</div>
+<div class="text-right text-primary">50.00</div>
+<div class="text-right">60</div>
+</div>
+</div>
+<a class="text-primary font-label-caps text-label-caps mt-4 inline-block hover:underline" href="#">VIEW FULL TABLE</a>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-surface-container/90 backdrop-blur-lg dark:bg-surface-container-highest/90 border-t border-white/10 shadow-[0_-8px_30px_rgb(0,0,0,0.5)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1.5 Active: scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps-mobile mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-label-caps text-label-caps-mobile mt-1">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps-mobile mt-1">Scores</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-caps text-label-caps-mobile mt-1">Chat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-caps text-label-caps-mobile mt-1">More</span>
+</a>
+</nav>
+</body></html>

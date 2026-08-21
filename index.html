@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>CRICLIVE PREMIUM - Pitchside Analytics & Live Match Center</title>
+  
+  <!-- Compiled Utility CSS (Zero JavaScript Required) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet"/>
+  <link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen pb-24 md:pb-0 pt-20">
+
+  <!-- ==========================================================================
+       PURE CSS MAIN ROUTER RADIO INPUTS (NO JAVASCRIPT)
+       ========================================================================== -->
+  <input type="radio" id="tab-home" name="main-nav" class="hidden" checked/>
+  <input type="radio" id="tab-live" name="main-nav" class="hidden"/>
+  <input type="radio" id="tab-schedule" name="main-nav" class="hidden"/>
+  <input type="radio" id="tab-analytics" name="main-nav" class="hidden"/>
+  <input type="radio" id="tab-teams" name="main-nav" class="hidden"/>
+  <input type="radio" id="tab-player" name="main-nav" class="hidden"/>
+  <input type="radio" id="tab-news" name="main-nav" class="hidden"/>
+
+  <!-- Modal Toggles -->
+  <input type="checkbox" id="modal-news-1" class="hidden modal-toggle"/>
+  <input type="checkbox" id="modal-squad-ind" class="hidden modal-toggle"/>
+  <input type="checkbox" id="modal-match-1" class="hidden modal-toggle"/>
+  <input type="checkbox" id="modal-search" class="hidden modal-toggle"/>
+
+  <!-- ==========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <label for="tab-home" class="cursor-pointer flex items-center gap-2">
+        <span class="font-headline text-2xl font-extrabold tracking-tighter text-blue-400 italic">CRICLIVE</span>
+        <span class="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded live-glow animate-pulse">PRO</span>
+      </label>
+
+      <!-- Desktop Nav Labels -->
+      <nav class="hidden lg:flex items-center gap-1">
+        <label for="tab-home" class="px-3 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all">Home</label>
+        <label for="tab-live" class="px-3 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-red-500 pulse-live"></span> Live Scores
+        </label>
+        <label for="tab-schedule" class="px-3 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all">Schedule</label>
+        <label for="tab-analytics" class="px-3 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all text-yellow-400">Pitchside AI</label>
+        <label for="tab-teams" class="px-3 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all">Teams</label>
+        <label for="tab-player" class="px-3 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all">Player Profile</label>
+        <label for="tab-news" class="px-3 py-1.5 rounded-lg text-sm font-bold uppercase tracking-wider text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer transition-all">News</label>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-3">
+        <label for="modal-search" class="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-full cursor-pointer transition-all flex items-center justify-center">
+          <span class="material-symbols-outlined">search</span>
+        </label>
+        <label for="tab-analytics" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg cursor-pointer">
+          <span class="material-symbols-outlined text-sm">auto_awesome</span> AI Insights
+        </label>
+      </div>
+    </div>
+
+    <!-- Live Ticker Bar Across Header -->
+    <div class="bg-black/60 border-t border-white/5 py-1.5 px-4 overflow-hidden border-b border-white/5">
+      <div class="max-w-7xl mx-auto flex items-center justify-between text-xs">
+        <div class="flex items-center gap-2 text-red-400 font-bold whitespace-nowrap mr-4">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> MATCH TICKER:
+        </div>
+        <div class="ticker-wrap flex-1">
+          <div class="ticker-move text-gray-300 font-data-mono">
+            <span class="inline-flex items-center gap-2 mr-8"><strong class="text-white">IND 324/4 (82.1)</strong> vs AUS • Kohli 124* (185), Pant 45* • Cummins 2/56</span>
+            <span class="inline-flex items-center gap-2 mr-8"><strong class="text-yellow-400">CSK 198/4</strong> vs <strong class="text-blue-400">MI 182/6 (18.2)</strong> • MI need 17 runs in 10 balls</span>
+            <span class="inline-flex items-center gap-2 mr-8"><strong class="text-green-400">SA 289/8</strong> def ENG 256/10 • SA won by 33 runs</span>
+            <span class="inline-flex items-center gap-2 mr-8"><strong class="text-white">IND 324/4 (82.1)</strong> vs AUS • Kohli 124* (185), Pant 45* • Cummins 2/56</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="max-w-7xl mx-auto px-4 pt-6 pb-16">
+
+    <!-- ==========================================================================
+         VIEW 1: HOME DASHBOARD
+         ========================================================================== -->
+    <div class="view-content view-home space-y-8">
+      
+      <!-- Hero Featured Match Card -->
+      <section class="glass-card rounded-2xl overflow-hidden relative min-h-[420px] flex flex-col justify-end p-6 md:p-8 border border-blue-500/20">
+        <div class="absolute inset-0 z-0">
+          <img class="w-full h-full object-cover opacity-40 mix-blend-luminosity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbMmmKMZgDuvhfPdhCVyBdxbJSpvNoGf41fv3E-VYn0q8M0dj5Qd01ov3Hea28byG9Og_8a8ZaTjqIBbLtL7tPytdpl7lvHwDDiPcrUKxHTKjRrbybuSDqxPnfvXt7TKCwHiqDx38wxOLzndMylz3dtg7dNKCiPRf-DO0XzBmtkbHuniDdK1T2pfE6zSRgb9JKimsGS-5TSUaEXDXAtJ3jlC0LIIA-QHi8_Dm7_KsbToIYJUmMGayz-g" alt="Cricket Match Action"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="bg-red-600 text-white px-2.5 py-1 rounded text-xs font-bold tracking-widest live-glow flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span> LIVE NOW
+            </span>
+            <span class="text-xs font-bold text-gray-300 uppercase tracking-wider">BORDER-GAVASKAR TROPHY • 1ST TEST • OPTUS STADIUM, PERTH</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end border-b border-white/10 pb-6">
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <div class="w-10 h-10 rounded-full bg-blue-700 flex items-center justify-center font-bold text-white shadow-lg">IND</div>
+                <h2 class="font-score-display text-4xl md:text-5xl text-white">324<span class="text-2xl text-gray-400 font-normal">/4</span></h2>
+              </div>
+              <div class="font-data-mono text-sm text-blue-300">82.1 Overs • Current Run Rate: 3.94 • 1st Innings</div>
+            </div>
+
+            <div class="md:text-right opacity-80">
+              <div class="flex items-center md:justify-end gap-3 mb-2">
+                <h2 class="font-score-display text-3xl text-gray-400">0<span class="text-xl">/0</span></h2>
+                <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center font-bold text-black shadow-lg">AUS</div>
+              </div>
+              <div class="font-data-mono text-sm text-gray-400">Yet to Bat</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-2">
+            <div class="flex flex-wrap gap-6 text-sm">
+              <div>
+                <div class="text-gray-400 text-xs uppercase font-bold">Batter</div>
+                <div class="font-bold text-blue-300">V Kohli 124* <span class="text-xs font-normal text-gray-400">(185b, 14x4, 2x6)</span></div>
+              </div>
+              <div>
+                <div class="text-gray-400 text-xs uppercase font-bold">Batter</div>
+                <div class="font-bold text-blue-300">R Pant 45* <span class="text-xs font-normal text-gray-400">(32b, 5x4, 3x6)</span></div>
+              </div>
+              <div>
+                <div class="text-gray-400 text-xs uppercase font-bold">Bowler</div>
+                <div class="font-bold text-gray-300">P Cummins 18.1-4-56-2</div>
+              </div>
+            </div>
+
+            <label for="modal-match-1" class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider shadow-lg cursor-pointer transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">sports_cricket</span> Match Center
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Home Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Main Content -->
+        <div class="lg:col-span-8 space-y-8">
+          
+          <!-- Trending News Grid -->
+          <section>
+            <div class="flex items-center justify-between mb-4 border-l-4 border-blue-500 pl-3">
+              <h3 class="font-headline text-xl font-bold text-white">Trending Broadcast Stories</h3>
+              <label for="tab-news" class="text-xs font-bold text-blue-400 hover:underline cursor-pointer">VIEW ALL NEWS →</label>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <article class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                <div class="h-48 overflow-hidden relative">
+                  <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACbzE_UBq5H7YzK0dtyKnCDOF3vhOb5mDGjhymUxuNAb5bfhFn7ohdMCYtqWJYjCtfRuBy7-SYyIspNPXaxWSNv1dIqPUvugg_sCtjbuhrVfbjG4qMxBmvQSBAfeifg_y_gXw3mC8Pl9ciTGM8i-yVZVNXJGpfsNEv1ibujPFeEfypo87YJtKr73y4M-DRn4DZKBCum8h5rFMImLJ-3vkAvX_eSUpf08abw-YEIg5e_MPSPsB-JAHq1g" alt="Tactical Analysis"/>
+                  <span class="absolute bottom-2 left-2 bg-blue-900/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-blue-300 uppercase">TACTICAL ANALYSIS</span>
+                </div>
+                <div class="p-4 space-y-2">
+                  <h4 class="font-headline text-base text-white group-hover:text-blue-400 transition-colors">Tactical breakdown: How India nullified the Perth short ball threat</h4>
+                  <p class="text-xs text-gray-400 line-clamp-2">Technical adjustments made by top order batters against genuine pace and bounce on Optus Stadium pitch.</p>
+                  <label for="modal-news-1" class="inline-block text-[11px] font-bold text-blue-400 hover:underline cursor-pointer pt-2">Read Full Report →</label>
+                </div>
+              </article>
+
+              <article class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                <div class="h-48 overflow-hidden relative">
+                  <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfwW7Yd0gOpD1RbsFCqoaNmt5Um9P59HOoX3AJJc-IOZfjJGgJSQuXlNSMQshYhNxmLTJjkNL_ccsq39E73WuY5A866yDnb-ONH9IYFDGDowdtv94rsqHgiDCw8sfhD35diFkvPLA5wIrdGqdLMgzt-Pz1E1P4sh2sWW0_eOGNejrAnKnZj-_ubg9DW0kEirD6Wcnt9KGzH1LFZ-bc2rDB0Kyoo9XLka_VcUpdQ4WjP0vdvKzjDKepOQ" alt="Injury Update"/>
+                  <span class="absolute bottom-2 left-2 bg-red-900/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-red-300 uppercase">INJURY UPDATE</span>
+                </div>
+                <div class="p-4 space-y-2">
+                  <h4 class="font-headline text-base text-white group-hover:text-blue-400 transition-colors">Key pacer ruled out of remainder of series with side strain</h4>
+                  <p class="text-xs text-gray-400 line-clamp-2">Scans reveal a grade 2 tear, forcing a major reshuffle in bowling attack ahead of the Adelaide pink ball test.</p>
+                  <label for="modal-news-1" class="inline-block text-[11px] font-bold text-blue-400 hover:underline cursor-pointer pt-2">Read Full Report →</label>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- Pitchside AI Pitch Preview Teaser -->
+          <section class="glass-card rounded-xl p-6 border-l-4 border-yellow-500 relative overflow-hidden">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div>
+                <span class="text-xs font-bold text-yellow-400 tracking-wider uppercase">PITCHSIDE AI PREDICTOR ENGINE</span>
+                <h3 class="font-headline text-lg font-bold text-white mt-1">Perth Optus Stadium Match Projection</h3>
+                <p class="text-xs text-gray-400 mt-1 max-w-lg">Live AI win predictor calculates a 68.5% win chance for India based on current 1st innings score and pitch degradation analytics.</p>
+              </div>
+              <label for="tab-analytics" class="bg-yellow-500 hover:bg-yellow-400 text-black text-xs font-bold px-5 py-2.5 rounded-lg uppercase tracking-wider cursor-pointer transition-all whitespace-nowrap">
+                Open AI Engine
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Sidebar Column -->
+        <aside class="lg:col-span-4 space-y-8">
+          
+          <!-- Upcoming Series Widget -->
+          <div class="glass-card rounded-xl p-6 space-y-4">
+            <h3 class="font-headline text-lg font-bold text-white border-b border-white/10 pb-3">Upcoming Global Series</h3>
+            
+            <div class="space-y-3">
+              <div class="p-3 rounded-lg bg-gray-900/60 hover:bg-white/5 transition-colors border border-white/5">
+                <div class="text-[10px] font-bold text-blue-400 uppercase">NOV 22 - JAN 07</div>
+                <div class="font-bold text-sm text-white">Border-Gavaskar Trophy</div>
+                <div class="text-xs text-gray-400">5 Tests • Australia</div>
+              </div>
+
+              <div class="p-3 rounded-lg bg-gray-900/60 hover:bg-white/5 transition-colors border border-white/5">
+                <div class="text-[10px] font-bold text-yellow-400 uppercase">JAN 12 - FEB 04</div>
+                <div class="font-bold text-sm text-white">SA20 League Season 3</div>
+                <div class="text-xs text-gray-400">T20 Franchise • South Africa</div>
+              </div>
+
+              <div class="p-3 rounded-lg bg-gray-900/60 hover:bg-white/5 transition-colors border border-white/5">
+                <div class="text-[10px] font-bold text-green-400 uppercase">MAR 22 - MAY 26</div>
+                <div class="font-bold text-sm text-white">Indian Premier League 2024</div>
+                <div class="text-xs text-gray-400">T20 Franchise • India</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WTC Points Table Widget -->
+          <div class="glass-card rounded-xl p-6 relative overflow-hidden">
+            <h3 class="font-headline text-lg font-bold text-white mb-4">WTC Points Table</h3>
+            
+            <div class="space-y-2 text-xs font-data-mono">
+              <div class="grid grid-cols-4 font-bold text-gray-400 border-b border-white/10 pb-2">
+                <span class="col-span-2">TEAM</span>
+                <span class="text-right">PCT</span>
+                <span class="text-right">PTS</span>
+              </div>
+
+              <div class="grid grid-cols-4 items-center bg-blue-950/40 p-2 rounded border border-blue-500/20">
+                <span class="col-span-2 font-bold text-white flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-blue-600"></span> IND</span>
+                <span class="text-right text-blue-300 font-bold">68.51</span>
+                <span class="text-right text-white">98</span>
+              </div>
+
+              <div class="grid grid-cols-4 items-center p-2 rounded">
+                <span class="col-span-2 font-bold text-gray-300 flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-yellow-500"></span> AUS</span>
+                <span class="text-right text-blue-300 font-bold">62.50</span>
+                <span class="text-right text-gray-300">90</span>
+              </div>
+
+              <div class="grid grid-cols-4 items-center p-2 rounded">
+                <span class="col-span-2 font-bold text-gray-300 flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-black border border-white/20"></span> NZ</span>
+                <span class="text-right text-blue-300 font-bold">50.00</span>
+                <span class="text-right text-gray-300">60</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         VIEW 2: LIVE SCORES HUB
+         ========================================================================== -->
+    <div class="view-content view-live space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-4">
+        <div>
+          <h1 class="font-headline text-2xl font-bold text-white">Live Match Hub</h1>
+          <p class="text-xs text-gray-400">Real-time ball-by-ball updates & live match scorecards worldwide</p>
+        </div>
+
+        <div class="flex bg-gray-900 rounded-full p-1 border border-white/10 text-xs font-bold">
+          <span class="px-4 py-1.5 rounded-full bg-blue-600 text-white">All Matches</span>
+          <span class="px-4 py-1.5 rounded-full text-gray-400 hover:text-white cursor-pointer">International</span>
+          <span class="px-4 py-1.5 rounded-full text-gray-400 hover:text-white cursor-pointer">IPL Franchise</span>
+        </div>
+      </div>
+
+      <!-- Scorecards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Match Card 1 (Test) -->
+        <div class="glass-card rounded-xl p-5 hover:border-blue-500/50 transition-all cursor-pointer relative overflow-hidden group">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[10px] font-bold text-gray-400 bg-gray-900 px-2 py-1 rounded">TEST • Day 3</span>
+            <span class="text-[10px] font-bold text-red-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-500 pulse-live"></span> LIVE</span>
+          </div>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-700 font-bold text-white flex items-center justify-center text-xs">IND</div>
+                <span class="font-bold text-white">India</span>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-xl font-extrabold text-white block">412/6</span>
+                <span class="text-xs text-gray-400">112.4 ov</span>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center opacity-70">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-yellow-600 font-bold text-white flex items-center justify-center text-xs">AUS</div>
+                <span class="font-bold text-white">Australia</span>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-lg font-bold text-gray-300 block">286</span>
+                <span class="text-xs text-gray-400">1st Inn</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-white/10 pt-3 flex justify-between items-center text-xs">
+            <span class="text-yellow-400 font-bold">India lead by 126 runs</span>
+            <label for="modal-match-1" class="text-blue-400 font-bold hover:underline cursor-pointer">Scorecard →</label>
+          </div>
+        </div>
+
+        <!-- Match Card 2 (IPL T20) -->
+        <div class="glass-card rounded-xl p-5 hover:border-blue-500/50 transition-all cursor-pointer relative overflow-hidden group">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[10px] font-bold text-gray-400 bg-gray-900 px-2 py-1 rounded">T20 • IPL Final</span>
+            <span class="text-[10px] font-bold text-red-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-red-500 pulse-live"></span> LIVE</span>
+          </div>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between items-center opacity-70">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-yellow-500 font-bold text-black flex items-center justify-center text-xs">CSK</div>
+                <span class="font-bold text-white">CSK</span>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-lg font-bold text-gray-300 block">198/4</span>
+                <span class="text-xs text-gray-400">20.0 ov</span>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-blue-600 font-bold text-white flex items-center justify-center text-xs">MI</div>
+                <span class="font-bold text-white">Mumbai Indians</span>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-xl font-extrabold text-white block">182/6</span>
+                <span class="text-xs text-gray-400">18.2 ov</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-white/10 pt-3 flex justify-between items-center text-xs">
+            <span class="text-green-400 font-bold">MI need 17 runs in 10 balls</span>
+            <span class="text-gray-400 font-data-mono">REQ: 10.2</span>
+          </div>
+        </div>
+
+        <!-- Match Card 3 (ODI) -->
+        <div class="glass-card rounded-xl p-5 hover:border-blue-500/50 transition-all cursor-pointer relative overflow-hidden group">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-[10px] font-bold text-gray-400 bg-gray-900 px-2 py-1 rounded">ODI • 3rd Match</span>
+            <span class="text-[10px] font-bold text-green-400">RESULT</span>
+          </div>
+
+          <div class="space-y-3 mb-4">
+            <div class="flex justify-between items-center">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-green-700 font-bold text-white flex items-center justify-center text-xs">SA</div>
+                <span class="font-bold text-white">South Africa</span>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-lg font-bold text-white block">289/8</span>
+                <span class="text-xs text-gray-400">50.0 ov</span>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center opacity-70">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-red-700 font-bold text-white flex items-center justify-center text-xs">ENG</div>
+                <span class="font-bold text-white">England</span>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-lg font-bold text-gray-300 block">256/10</span>
+                <span class="text-xs text-gray-400">48.3 ov</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-white/10 pt-3 flex justify-between items-center text-xs">
+            <span class="text-blue-400 font-bold">South Africa won by 33 runs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         VIEW 3: MATCHES & SCHEDULE
+         ========================================================================== -->
+    <div class="view-content view-schedule space-y-6">
+      
+      <!-- Radio Filter Bar for Schedule -->
+      <input type="radio" id="sched-all" name="sched-filter" class="hidden" checked/>
+      <input type="radio" id="sched-test" name="sched-filter" class="hidden"/>
+      <input type="radio" id="sched-odi" name="sched-filter" class="hidden"/>
+      <input type="radio" id="sched-t20" name="sched-filter" class="hidden"/>
+
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-4">
+        <div>
+          <h1 class="font-headline text-2xl font-bold text-white">Match Fixtures & Schedule</h1>
+          <p class="text-xs text-gray-400">Filter upcoming international and franchise cricket matches</p>
+        </div>
+
+        <div class="sched-filter-bar flex bg-gray-900 rounded-lg p-1 border border-white/10 text-xs font-bold gap-1">
+          <label for="sched-all" class="px-4 py-1.5 rounded cursor-pointer transition-all text-gray-300">All Formats</label>
+          <label for="sched-test" class="px-4 py-1.5 rounded cursor-pointer transition-all text-gray-300">Test Matches</label>
+          <label for="sched-odi" class="px-4 py-1.5 rounded cursor-pointer transition-all text-gray-300">ODI</label>
+          <label for="sched-t20" class="px-4 py-1.5 rounded cursor-pointer transition-all text-gray-300">T20 / IPL</label>
+        </div>
+      </div>
+
+      <!-- Schedule Cards Container -->
+      <div class="schedule-grid space-y-4">
+        
+        <!-- Match 1 -->
+        <div class="sched-card match-format-test glass-card rounded-xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:border-white/30 transition-all">
+          <div class="space-y-1">
+            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">TOMORROW • 09:30 IST</span>
+            <h3 class="font-headline text-lg font-bold text-white">India vs Australia</h3>
+            <p class="text-xs text-gray-400">1st Test • Border-Gavaskar Trophy • Optus Stadium, Perth</p>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <span class="bg-blue-900/60 text-blue-300 border border-blue-500/30 px-3 py-1 rounded text-xs font-bold">TEST FORMAT</span>
+            <label for="modal-match-1" class="bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold px-4 py-2 rounded-lg cursor-pointer">Match Details</label>
+          </div>
+        </div>
+
+        <!-- Match 2 -->
+        <div class="sched-card match-format-t20 glass-card rounded-xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:border-white/30 transition-all">
+          <div class="space-y-1">
+            <span class="text-[10px] font-bold text-yellow-400 uppercase tracking-widest">FRIDAY, 15 NOV • 19:00 IST</span>
+            <h3 class="font-headline text-lg font-bold text-white">England vs South Africa</h3>
+            <p class="text-xs text-gray-400">3rd T20I • Lord's Cricket Ground, London</p>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <span class="bg-yellow-950/60 text-yellow-300 border border-yellow-500/30 px-3 py-1 rounded text-xs font-bold">T20I</span>
+            <label for="modal-match-1" class="bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold px-4 py-2 rounded-lg cursor-pointer">Match Details</label>
+          </div>
+        </div>
+
+        <!-- Match 3 -->
+        <div class="sched-card match-format-odi glass-card rounded-xl p-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:border-white/30 transition-all">
+          <div class="space-y-1">
+            <span class="text-[10px] font-bold text-green-400 uppercase tracking-widest">SUNDAY, 17 NOV • 14:00 IST</span>
+            <h3 class="font-headline text-lg font-bold text-white">New Zealand vs West Indies</h3>
+            <p class="text-xs text-gray-400">1st ODI • Eden Park, Auckland</p>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <span class="bg-green-950/60 text-green-300 border border-green-500/30 px-3 py-1 rounded text-xs font-bold">ODI</span>
+            <label for="modal-match-1" class="bg-gray-800 hover:bg-gray-700 text-white text-xs font-bold px-4 py-2 rounded-lg cursor-pointer">Match Details</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         VIEW 4: PITCHSIDE PRECISION AI ANALYTICS
+         ========================================================================== -->
+    <div class="view-content view-analytics space-y-8">
+      <div class="border-b border-white/10 pb-4">
+        <span class="text-xs font-bold text-yellow-400 uppercase tracking-widest">BROADCAST AI ENGINE</span>
+        <h1 class="font-headline text-2xl font-bold text-white">Pitchside Precision Analytics</h1>
+        <p class="text-xs text-gray-400">Real-time pitch heatmaps, win probability models, and batter vs bowler matchup matrix</p>
+      </div>
+
+      <!-- AI Win Predictor Meter -->
+      <section class="glass-card rounded-2xl p-6 border border-yellow-500/30 space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="font-headline text-lg font-bold text-white">Live Win Probability Predictor</h3>
+          <span class="text-xs font-bold text-yellow-400 bg-yellow-950/60 px-3 py-1 rounded-full border border-yellow-500/30">AI CONFIDENCE: 94.2%</span>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs font-bold">
+            <span class="text-blue-400">INDIA: 68.5%</span>
+            <span class="text-yellow-400">AUSTRALIA: 31.5%</span>
+          </div>
+
+          <div class="h-4 w-full bg-gray-900 rounded-full overflow-hidden flex border border-white/10">
+            <div class="h-full bg-gradient-to-r from-blue-600 to-blue-400 w-[68.5%] transition-all duration-1000"></div>
+            <div class="h-full bg-gradient-to-r from-yellow-500 to-yellow-600 w-[31.5%] transition-all duration-1000"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grid Analytics Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Pitch Condition Card -->
+        <div class="glass-card rounded-xl p-6 space-y-4">
+          <h3 class="font-headline text-base font-bold text-white border-b border-white/10 pb-2">Optus Stadium Pitch Conditions</h3>
+          
+          <div class="grid grid-cols-2 gap-4 text-xs">
+            <div class="bg-gray-900/60 p-3 rounded border border-white/5">
+              <span class="text-gray-400 block mb-1">Grass Cover</span>
+              <strong class="text-white text-base">6mm (Hard)</strong>
+            </div>
+
+            <div class="bg-gray-900/60 p-3 rounded border border-white/5">
+              <span class="text-gray-400 block mb-1">Pace & Bounce</span>
+              <strong class="text-yellow-400 text-base">High (144 km/h)</strong>
+            </div>
+
+            <div class="bg-gray-900/60 p-3 rounded border border-white/5">
+              <span class="text-gray-400 block mb-1">Expected Spin</span>
+              <strong class="text-gray-300 text-base">1.8° (Day 4/5)</strong>
+            </div>
+
+            <div class="bg-gray-900/60 p-3 rounded border border-white/5">
+              <span class="text-gray-400 block mb-1">Weather</span>
+              <strong class="text-blue-300 text-base">28°C Clear</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matchup Matrix Card -->
+        <div class="glass-card rounded-xl p-6 space-y-4">
+          <h3 class="font-headline text-base font-bold text-white border-b border-white/10 pb-2">Batter vs Bowler Key Matchup</h3>
+          
+          <div class="space-y-3 text-xs">
+            <div class="flex justify-between items-center bg-gray-900/60 p-3 rounded border border-white/5">
+              <div>
+                <div class="font-bold text-white text-sm">Virat Kohli vs Pat Cummins</div>
+                <div class="text-gray-400">Test Matches (Head to Head)</div>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-blue-300 font-bold block">104 Runs</span>
+                <span class="text-red-400">5 Out (Avg 20.8)</span>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center bg-gray-900/60 p-3 rounded border border-white/5">
+              <div>
+                <div class="font-bold text-white text-sm">Rohit Sharma vs Mitchell Starc</div>
+                <div class="text-gray-400">Test Matches (Head to Head)</div>
+              </div>
+              <div class="text-right font-data-mono">
+                <span class="text-blue-300 font-bold block">186 Runs</span>
+                <span class="text-green-400">2 Out (Avg 93.0)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         VIEW 5: TEAMS DIRECTORY
+         ========================================================================== -->
+    <div class="view-content view-teams space-y-6">
+      
+      <!-- Radio Filter for Teams -->
+      <input type="radio" id="teams-all" name="teams-filter" class="hidden" checked/>
+      <input type="radio" id="teams-national" name="teams-filter" class="hidden"/>
+      <input type="radio" id="teams-franchise" name="teams-filter" class="hidden"/>
+
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-4">
+        <div>
+          <h1 class="font-headline text-2xl font-bold text-white">Teams Directory</h1>
+          <p class="text-xs text-gray-400">Explore international squads and elite franchise rosters</p>
+        </div>
+
+        <div class="teams-filter-bar flex bg-gray-900 rounded-full p-1 border border-white/10 text-xs font-bold gap-1">
+          <label for="teams-all" class="px-5 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">All Squads</label>
+          <label for="teams-national" class="px-5 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">National Teams</label>
+          <label for="teams-franchise" class="px-5 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">IPL Franchises</label>
+        </div>
+      </div>
+
+      <!-- Teams Grid -->
+      <div class="teams-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Team 1: India -->
+        <div class="team-card team-national team-card-india glass-card rounded-xl overflow-hidden flex flex-col justify-between p-6 space-y-4">
+          <div class="flex justify-between items-start">
+            <div class="w-16 h-16 rounded-full bg-blue-900/60 flex items-center justify-center border border-white/20 shadow-lg">
+              <img class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjsQ4ah713QDvoBkgNJAG5ACWjfwksC4GTJq6wt-K70wtvlteO0stYu1ZbCAtjNzXnwuUJuSWr3y0tNA-tB4eXS5EYAta9CVeb25jgGmlG_AIdQ-_5VqAlEpXUVPCNzVcEZDNaBx8N1S0dGul5RmMf3uERje04cTfXZAVo94nws4gcTNIqatTPwNGzN2uFH2cP1uybWCFV92B_ADVEWcLNmF3O7SYpfFoVX4Nu_DT0_NeOiQvne0KZiQ" alt="India Emblem"/>
+            </div>
+            <span class="bg-blue-950 text-blue-300 text-[10px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30">ICC #1 RANKED</span>
+          </div>
+
+          <div>
+            <h3 class="font-headline text-xl font-bold text-white">India</h3>
+            <p class="text-xs text-gray-400">National Men's Team</p>
+          </div>
+
+          <label for="modal-squad-ind" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs py-2.5 rounded-lg text-center cursor-pointer transition-all block">
+            View Official Squad
+          </label>
+        </div>
+
+        <!-- Team 2: Australia -->
+        <div class="team-card team-national team-card-aus glass-card rounded-xl overflow-hidden flex flex-col justify-between p-6 space-y-4">
+          <div class="flex justify-between items-start">
+            <div class="w-16 h-16 rounded-full bg-yellow-900/60 flex items-center justify-center border border-white/20 shadow-lg">
+              <img class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfSKzBTJ3GLIiRjDk63WfKlIbOxwVwt1lIpkQ4X5uzmUPk3IQleB23x4W_nkopsNqkIYBeABQNfn5KM8kwaP52qKdwv2XexlsqzYEtA61i6aRrQvz5k-DE4HYuNxabWP91WwbmnC8hgZTF59S--5nUcaboZ5Sra1Cou_-xn5LhU2feWj3kQovfHjzmDnxsolZheN-QGc817ImLUwuLt7gquOpcHUmJuz6SXInMvmuQnUNbg8BFQQoXxQ" alt="Aus Emblem"/>
+            </div>
+            <span class="bg-yellow-950 text-yellow-300 text-[10px] font-bold px-2.5 py-1 rounded-full border border-yellow-500/30">ICC #2 RANKED</span>
+          </div>
+
+          <div>
+            <h3 class="font-headline text-xl font-bold text-white">Australia</h3>
+            <p class="text-xs text-gray-400">National Men's Team</p>
+          </div>
+
+          <label for="modal-squad-ind" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-bold text-xs py-2.5 rounded-lg text-center cursor-pointer transition-all block">
+            View Official Squad
+          </label>
+        </div>
+
+        <!-- Team 3: Mumbai Indians -->
+        <div class="team-card team-franchise team-card-mi glass-card rounded-xl overflow-hidden flex flex-col justify-between p-6 space-y-4">
+          <div class="flex justify-between items-start">
+            <div class="w-16 h-16 rounded-full bg-blue-950 flex items-center justify-center border border-white/20 shadow-lg">
+              <img class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA85RMrWZgAm1LhxbR5Utek192iC3h0cq2acIzcM9VKEu69h7J7nnU9AXagkc_hGG5Xa5NsV6eGlZFwMGmYxF7BQFwt-Z_oNySzThtm53UAuIIvBbu2U5tPWCjRak68t9lEQshabEoyQ0xAxTZM4EhMmaQBRaXqWCxz_coL1jiYO89Rvkq-R5kr-qzR37wvYQ5GTcz5mGgcWguinmH0nLYQMpJ5kkZGKW9Lo8sNPTX4fNimBDxbWG_NUg" alt="MI Logo"/>
+            </div>
+            <span class="bg-blue-950 text-blue-300 text-[10px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30">5 IPL TITLES</span>
+          </div>
+
+          <div>
+            <h3 class="font-headline text-xl font-bold text-white">Mumbai Indians</h3>
+            <p class="text-xs text-gray-400">Indian Premier League</p>
+          </div>
+
+          <label for="modal-squad-ind" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-bold text-xs py-2.5 rounded-lg text-center cursor-pointer transition-all block">
+            View Official Squad
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         VIEW 6: PLAYER PROFILE
+         ========================================================================== -->
+    <div class="view-content view-player space-y-6">
+      
+      <!-- Radio Inputs for Player Switcher -->
+      <input type="radio" id="player-virat" name="player-select" class="hidden" checked/>
+      <input type="radio" id="player-rohit" name="player-select" class="hidden"/>
+      <input type="radio" id="player-cummins" name="player-select" class="hidden"/>
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/10 pb-4">
+        <div>
+          <h1 class="font-headline text-2xl font-bold text-white">Player Profiles & Analytics</h1>
+          <p class="text-xs text-gray-400">Comprehensive career statistics, rankings, and recent form breakdown</p>
+        </div>
+
+        <div class="player-selector-bar flex bg-gray-900 rounded-full p-1 border border-white/10 text-xs font-bold gap-1">
+          <label for="player-virat" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">Virat Kohli</label>
+          <label for="player-rohit" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">Rohit Sharma</label>
+          <label for="player-cummins" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">Pat Cummins</label>
+        </div>
+      </div>
+
+      <div class="player-container space-y-8">
+        
+        <!-- VIRAT KOHLI VIEW -->
+        <div class="player-view player-virat-view space-y-8">
+          
+          <!-- Player Hero Header -->
+          <section class="glass-card rounded-2xl p-6 md:p-8 player-hero-gradient relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-blue-500/50 overflow-hidden shadow-2xl flex-shrink-0">
+              <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtVaSzeapz1k0iWyIcTDewf-8zsGQ7PSMTCSrdQiWF0QXAQ7Oy-QDFmX7v08641L0uUE0FKNznOaMwitaHZImiXZ_hkmCJR0FlPxyRDfNEIg-ovSpw1Lh3e1OpSH6cGCHfGdzmDbXESDTJz6YetvvbMo79lc0kVLiSlnQ0_1gfizjKEFN2xNB7th44JQipe5RS_DVdD8Lcpzj-vZ8Pt2rPD5GlQKxKw2gq8ILhWvnEbyseTmDacSZmHA" alt="Virat Kohli"/>
+            </div>
+
+            <div class="space-y-2 text-center md:text-left flex-1">
+              <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                <span class="bg-blue-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">BATTER</span>
+                <span class="bg-gray-800 text-gray-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">INDIA</span>
+              </div>
+              <h2 class="font-score-display text-4xl text-white">Virat Kohli</h2>
+              <p class="text-sm font-bold text-blue-300">Right-Handed Batsman • Top Order</p>
+            </div>
+
+            <div class="glass-card px-6 py-4 rounded-xl text-center md:text-right flex-shrink-0 border border-yellow-500/30">
+              <div class="text-[10px] font-bold text-gray-400">ICC ODI RANKING</div>
+              <div class="font-score-display text-3xl text-yellow-400">#3</div>
+            </div>
+          </section>
+
+          <!-- Career Stats Bento Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div class="md:col-span-4 glass-card rounded-xl p-6 space-y-3">
+              <h3 class="font-headline text-base font-bold text-white border-b border-white/10 pb-2">Career Summary</h3>
+              <div class="flex justify-between py-1 border-b border-white/5 text-xs"><span class="text-gray-400">Matches</span><strong class="text-white font-data-mono">522</strong></div>
+              <div class="flex justify-between py-1 border-b border-white/5 text-xs"><span class="text-gray-400">Total Runs</span><strong class="text-yellow-400 font-data-mono text-sm">26,733</strong></div>
+              <div class="flex justify-between py-1 border-b border-white/5 text-xs"><span class="text-gray-400">Centuries (100s)</span><strong class="text-green-400 font-data-mono text-sm">80</strong></div>
+              <div class="flex justify-between py-1 text-xs"><span class="text-gray-400">Fifties (50s)</span><strong class="text-white font-data-mono">139</strong></div>
+            </div>
+
+            <div class="md:col-span-8 glass-card rounded-xl p-6 overflow-x-auto space-y-3">
+              <h3 class="font-headline text-base font-bold text-white border-b border-white/10 pb-2">Format Breakdown</h3>
+              <table class="w-full text-xs text-left font-data-mono">
+                <thead>
+                  <tr class="text-gray-400 border-b border-white/10">
+                    <th class="pb-2">FORMAT</th>
+                    <th class="pb-2 text-right">M</th>
+                    <th class="pb-2 text-right">RUNS</th>
+                    <th class="pb-2 text-right">AVG</th>
+                    <th class="pb-2 text-right">SR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="zebra-row">
+                    <td class="py-2.5 font-bold text-white">Test</td>
+                    <td class="text-right text-gray-400">113</td>
+                    <td class="text-right font-bold text-white">8,848</td>
+                    <td class="text-right text-yellow-400">49.15</td>
+                    <td class="text-right text-gray-300">55.56</td>
+                  </tr>
+                  <tr class="zebra-row">
+                    <td class="py-2.5 font-bold text-white">ODI</td>
+                    <td class="text-right text-gray-400">292</td>
+                    <td class="text-right font-bold text-white">13,848</td>
+                    <td class="text-right text-yellow-400">58.67</td>
+                    <td class="text-right text-gray-300">93.58</td>
+                  </tr>
+                  <tr class="zebra-row">
+                    <td class="py-2.5 font-bold text-white">T20I</td>
+                    <td class="text-right text-gray-400">117</td>
+                    <td class="text-right font-bold text-white">4,037</td>
+                    <td class="text-right text-yellow-400">51.75</td>
+                    <td class="text-right text-gray-300">138.15</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ROHIT SHARMA VIEW -->
+        <div class="player-view player-rohit-view space-y-8">
+          <section class="glass-card rounded-2xl p-6 md:p-8 player-hero-gradient relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-blue-500/50 overflow-hidden shadow-2xl flex-shrink-0 bg-blue-900 flex items-center justify-center font-bold text-4xl text-white">
+              RS
+            </div>
+            <div class="space-y-2 text-center md:text-left flex-1">
+              <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                <span class="bg-blue-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">CAPTAIN & BATTER</span>
+                <span class="bg-gray-800 text-gray-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">INDIA</span>
+              </div>
+              <h2 class="font-score-display text-4xl text-white">Rohit Sharma</h2>
+              <p class="text-sm font-bold text-blue-300">Right-Handed Opener • Hitman</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- PAT CUMMINS VIEW -->
+        <div class="player-view player-cummins-view space-y-8">
+          <section class="glass-card rounded-2xl p-6 md:p-8 player-hero-gradient relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-yellow-500/50 overflow-hidden shadow-2xl flex-shrink-0 bg-yellow-900 flex items-center justify-center font-bold text-4xl text-white">
+              PC
+            </div>
+            <div class="space-y-2 text-center md:text-left flex-1">
+              <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                <span class="bg-yellow-600 text-black text-[10px] font-bold px-2.5 py-0.5 rounded-full">CAPTAIN & BOWLER</span>
+                <span class="bg-gray-800 text-gray-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">AUSTRALIA</span>
+              </div>
+              <h2 class="font-score-display text-4xl text-white">Pat Cummins</h2>
+              <p class="text-sm font-bold text-yellow-300">Right-Arm Fast Bowler • Captain</p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         VIEW 7: NEWS & EDITORIAL PORTAL
+         ========================================================================== -->
+    <div class="view-content view-news space-y-6">
+      
+      <!-- Radio Filter for News -->
+      <input type="radio" id="news-cat-all" name="news-cat" class="hidden" checked/>
+      <input type="radio" id="news-cat-analysis" name="news-cat" class="hidden"/>
+      <input type="radio" id="news-cat-interviews" name="news-cat" class="hidden"/>
+      <input type="radio" id="news-cat-reports" name="news-cat" class="hidden"/>
+      <input type="radio" id="news-cat-viral" name="news-cat" class="hidden"/>
+
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-4">
+        <div>
+          <h1 class="font-headline text-2xl font-bold text-white">News & Editorial Hub</h1>
+          <p class="text-xs text-gray-400">Exclusive match reports, technical analyses, and captain interviews</p>
+        </div>
+
+        <div class="news-filter-bar flex bg-gray-900 rounded-full p-1 border border-white/10 text-xs font-bold gap-1 overflow-x-auto">
+          <label for="news-cat-all" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">All News</label>
+          <label for="news-cat-analysis" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">Analysis</label>
+          <label for="news-cat-interviews" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">Interviews</label>
+          <label for="news-cat-reports" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">Reports</label>
+          <label for="news-cat-viral" class="px-4 py-1.5 rounded-full cursor-pointer transition-all text-gray-300">Viral</label>
+        </div>
+      </div>
+
+      <!-- Featured Story Hero Banner -->
+      <section class="relative w-full h-[400px] rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10">
+        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFY8DnMGk0Uiud_xQ5oga5OrsBIt_MvsMawjEThUmnRuwWRH-ap-lYudhcdF3_wVcArzOsUTjO70Xn-NdjpJlMxvYh7bHaR5ajO_d4_z4K81OS99AWlfenpv8JG97eyTqOqdf9Q7rSTthCjTtsXEW5sKyzwBtKIvsV0Gjv0gAEUVGJnWHWExaAZStM7s3eM3CE1tAy6kBjUYf7trlgIjJTgy8RgxhlBMSY6a54rPE6L_gLJkdEyBni_g');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-transparent"></div>
+
+        <div class="absolute bottom-0 left-0 p-6 md:p-8 space-y-3 max-w-3xl">
+          <span class="px-3 py-1 bg-red-600/80 text-white rounded text-[10px] font-bold uppercase tracking-wider">MATCH REPORTS</span>
+          <h2 class="font-headline text-2xl md:text-3xl font-bold text-white">The Final Over Drama: Kings Clinch Victory from Jaws of Defeat</h2>
+          <p class="text-xs md:text-sm text-gray-300 line-clamp-2">In a match that will be remembered for years, an incredible display of death bowling sealed a thrilling 3-run victory under floodlights.</p>
+          <label for="modal-news-1" class="inline-block bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-5 py-2 rounded-lg cursor-pointer">Read Full Article →</label>
+        </div>
+      </section>
+
+      <!-- Bento News Grid -->
+      <div class="news-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Card 1 -->
+        <article class="news-card news-analysis glass-card rounded-xl p-5 space-y-3">
+          <span class="text-[10px] font-bold text-yellow-400 bg-yellow-950/80 px-2.5 py-0.5 rounded uppercase">ANALYSIS</span>
+          <h3 class="font-headline text-base font-bold text-white">Decoding the Mystery Spinner: Middle Overs Variations</h3>
+          <p class="text-xs text-gray-400">Deep dive into pitch maps, release points, and subtle grip variations confusing top order batsmen.</p>
+          <label for="modal-news-1" class="inline-block text-xs font-bold text-blue-400 hover:underline cursor-pointer">Read Story →</label>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="news-card news-interviews glass-card rounded-xl p-5 space-y-3">
+          <span class="text-[10px] font-bold text-green-400 bg-green-950/80 px-2.5 py-0.5 rounded uppercase">INTERVIEW</span>
+          <h3 class="font-headline text-base font-bold text-white">"Pressure is a Privilege" - Captain's Pre-Final Chat</h3>
+          <p class="text-xs text-gray-400">Candid locker room interview on tactical preparation, mindset, and coping with high stakes.</p>
+          <label for="modal-news-1" class="inline-block text-xs font-bold text-blue-400 hover:underline cursor-pointer">Read Story →</label>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="news-card news-viral glass-card rounded-xl p-5 space-y-3 border-l-4 border-red-500">
+          <span class="text-[10px] font-bold text-red-400 bg-red-950/80 px-2.5 py-0.5 rounded uppercase">VIRAL MOMENT</span>
+          <h3 class="font-headline text-base font-bold text-white">Watch: Spectacular Boundary Save Stuns the Crowd</h3>
+          <p class="text-xs text-gray-400">Acrobatic effort on the boundary rope goes viral across sports broadcasting channels.</p>
+          <label for="modal-news-1" class="inline-block text-xs font-bold text-blue-400 hover:underline cursor-pointer">Read Story →</label>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       PURE CSS MODAL OVERLAYS (NO JAVASCRIPT)
+       ========================================================================== -->
+
+  <!-- Modal 1: Full News Article Overlay -->
+  <div class="modal-wrapper modal-news-1-wrapper hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="glass-card max-w-2xl w-full p-6 rounded-2xl relative max-h-[85vh] overflow-y-auto space-y-4 border border-blue-500/30">
+      <label for="modal-news-1" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer font-bold text-xl">✕</label>
+
+      <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">EXCLUSIVES • BROADCAST SPECIAL</span>
+      <h2 class="font-headline text-2xl font-bold text-white">The Final Over Drama: Kings Clinch Victory from Jaws of Defeat</h2>
+      
+      <div class="flex items-center gap-3 text-xs text-gray-400 border-b border-white/10 pb-3">
+        <span>By Rajat Sharma</span> • <span>Optus Stadium, Perth</span> • <span>Updated 2 hours ago</span>
+      </div>
+
+      <img class="w-full h-56 object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFY8DnMGk0Uiud_xQ5oga5OrsBIt_MvsMawjEThUmnRuwWRH-ap-lYudhcdF3_wVcArzOsUTjO70Xn-NdjpJlMxvYh7bHaR5ajO_d4_z4K81OS99AWlfenpv8JG97eyTqOqdf9Q7rSTthCjTtsXEW5sKyzwBtKIvsV0Gjv0gAEUVGJnWHWExaAZStM7s3eM3CE1tAy6kBjUYf7trlgIjJTgy8RgxhlBMSY6a54rPE6L_gLJkdEyBni_g" alt="Full Story"/>
+
+      <p class="text-xs text-gray-300 leading-relaxed">In one of the most thrilling finishes in recent memory, the Perth Test saw an astonishing display of death bowling under lights. Requiring 14 runs off the final over with 2 wickets in hand, the batting side fell just 3 runs short after a heroic yorker-length spell.</p>
+
+      <blockquote class="p-3 border-l-4 border-blue-500 bg-blue-950/30 text-xs italic text-blue-200 rounded">
+        "We executed our bowling pitch maps exactly to plan under high pressure situations."
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- Modal 2: Indian Squad Overlay -->
+  <div class="modal-wrapper modal-squad-ind-wrapper hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="glass-card max-w-lg w-full p-6 rounded-2xl relative max-h-[85vh] overflow-y-auto space-y-4 border border-blue-500/30">
+      <label for="modal-squad-ind" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer font-bold text-xl">✕</label>
+
+      <h2 class="font-headline text-xl font-bold text-white border-b border-white/10 pb-3">Official Indian Test Squad</h2>
+
+      <div class="space-y-2 text-xs font-data-mono">
+        <div class="flex justify-between p-2 rounded bg-gray-900/60"><span class="font-bold text-white">Rohit Sharma (C)</span><span class="text-blue-400">Batter</span></div>
+        <div class="flex justify-between p-2 rounded bg-gray-900/60"><span class="font-bold text-white">Virat Kohli</span><span class="text-blue-400">Batter</span></div>
+        <div class="flex justify-between p-2 rounded bg-gray-900/60"><span class="font-bold text-white">Jasprit Bumrah (VC)</span><span class="text-red-400">Fast Bowler</span></div>
+        <div class="flex justify-between p-2 rounded bg-gray-900/60"><span class="font-bold text-white">Rishabh Pant (WK)</span><span class="text-yellow-400">Wicketkeeper</span></div>
+        <div class="flex justify-between p-2 rounded bg-gray-900/60"><span class="font-bold text-white">Ravindra Jadeja</span><span class="text-green-400">All-Rounder</span></div>
+        <div class="flex justify-between p-2 rounded bg-gray-900/60"><span class="font-bold text-white">Mohammed Siraj</span><span class="text-red-400">Fast Bowler</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Live Scorecard Details Overlay -->
+  <div class="modal-wrapper modal-match-1-wrapper hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="glass-card max-w-xl w-full p-6 rounded-2xl relative max-h-[85vh] overflow-y-auto space-y-4 border border-blue-500/30">
+      <label for="modal-match-1" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer font-bold text-xl">✕</label>
+
+      <span class="text-[10px] font-bold text-red-400 bg-red-950/80 px-2 py-0.5 rounded">LIVE SCORECARD</span>
+      <h2 class="font-headline text-lg font-bold text-white">India 324/4 (82.1 ov) vs Australia</h2>
+
+      <div class="p-3 bg-gray-900/60 rounded-xl space-y-2 text-xs">
+        <div class="font-bold text-gray-300">Recent Ball-by-Ball Timeline:</div>
+        <div class="flex gap-2 font-data-mono text-center">
+          <span class="w-7 h-7 rounded bg-blue-600 text-white flex items-center justify-center font-bold">4</span>
+          <span class="w-7 h-7 rounded bg-gray-800 text-gray-300 flex items-center justify-center">1</span>
+          <span class="w-7 h-7 rounded bg-red-600 text-white flex items-center justify-center font-bold">W</span>
+          <span class="w-7 h-7 rounded bg-yellow-500 text-black flex items-center justify-center font-bold">6</span>
+          <span class="w-7 h-7 rounded bg-gray-800 text-gray-300 flex items-center justify-center">0</span>
+          <span class="w-7 h-7 rounded bg-gray-800 text-gray-300 flex items-center justify-center">2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Search Overlay -->
+  <div class="modal-wrapper modal-search-wrapper hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-6 rounded-2xl relative space-y-4 border border-blue-500/30">
+      <label for="modal-search" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer font-bold text-xl">✕</label>
+
+      <h2 class="font-headline text-lg font-bold text-white">Global Search</h2>
+      <input type="text" placeholder="Search players, teams, series or articles..." class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"/>
+
+      <div class="text-xs text-gray-400 space-y-2">
+        <div class="font-bold text-gray-300">Popular Searches:</div>
+        <div class="flex flex-wrap gap-2">
+          <label for="tab-player" class="bg-gray-800 hover:bg-gray-700 text-blue-300 px-2.5 py-1 rounded cursor-pointer">Virat Kohli</label>
+          <label for="tab-teams" class="bg-gray-800 hover:bg-gray-700 text-blue-300 px-2.5 py-1 rounded cursor-pointer">India Squad</label>
+          <label for="tab-analytics" class="bg-gray-800 hover:bg-gray-700 text-yellow-300 px-2.5 py-1 rounded cursor-pointer">Pitch Analytics</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MOBILE BOTTOM NAVIGATION BAR
+       ========================================================================== -->
+  <nav class="mobile-bottom-nav fixed bottom-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl border-t border-white/10 py-2 px-4 flex lg:hidden justify-around items-center text-center">
+    <label for="tab-home" class="flex flex-col items-center text-gray-400 cursor-pointer">
+      <span class="material-symbols-outlined text-xl">home</span>
+      <span class="text-[10px] font-bold">Home</span>
+    </label>
+
+    <label for="tab-live" class="flex flex-col items-center text-gray-400 cursor-pointer">
+      <span class="material-symbols-outlined text-xl text-red-500">sensors</span>
+      <span class="text-[10px] font-bold">Live</span>
+    </label>
+
+    <label for="tab-analytics" class="flex flex-col items-center text-gray-400 cursor-pointer">
+      <span class="material-symbols-outlined text-xl text-yellow-400">auto_awesome</span>
+      <span class="text-[10px] font-bold">AI</span>
+    </label>
+
+    <label for="tab-teams" class="flex flex-col items-center text-gray-400 cursor-pointer">
+      <span class="material-symbols-outlined text-xl">groups</span>
+      <span class="text-[10px] font-bold">Teams</span>
+    </label>
+
+    <label for="tab-news" class="flex flex-col items-center text-gray-400 cursor-pointer">
+      <span class="material-symbols-outlined text-xl">newspaper</span>
+      <span class="text-[10px] font-bold">News</span>
+    </label>
+  </nav>
+
+</body>
+</html>

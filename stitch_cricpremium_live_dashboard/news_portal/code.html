@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CRICLIVE - News &amp; Editorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Montserrat:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffe089",
+                        "tertiary-fixed-dim": "#71dc8a",
+                        "on-background": "#e1e2eb",
+                        "tertiary-container": "#005f2a",
+                        "on-surface-variant": "#c2c6d3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#191c22",
+                        "on-primary": "#003060",
+                        "outline": "#8c919c",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "surface-container-lowest": "#0b0e14",
+                        "inverse-surface": "#e1e2eb",
+                        "on-secondary-container": "#6e5700",
+                        "on-secondary": "#3d2f00",
+                        "outline-variant": "#424751",
+                        "secondary-container": "#fecc00",
+                        "primary-fixed": "#d5e3ff",
+                        "inverse-on-surface": "#2e3037",
+                        "on-tertiary-fixed": "#00210a",
+                        "on-tertiary-container": "#70db89",
+                        "secondary": "#ffecbf",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface": "#10131a",
+                        "on-tertiary-fixed-variant": "#005324",
+                        "tertiary-fixed": "#8ef9a4",
+                        "tertiary": "#71dc8a",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#1d5fa8",
+                        "primary-container": "#00529b",
+                        "surface-container-highest": "#32353c",
+                        "secondary-fixed-dim": "#f0c100",
+                        "on-secondary-fixed-variant": "#574500",
+                        "background": "#10131a",
+                        "on-primary-fixed-variant": "#004787",
+                        "on-primary-fixed": "#001c3b",
+                        "surface-tint": "#a6c8ff",
+                        "on-surface": "#e1e2eb",
+                        "on-tertiary": "#003916",
+                        "on-primary-container": "#a5c7ff",
+                        "primary": "#a6c8ff",
+                        "surface-dim": "#10131a",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container": "#1d2026",
+                        "surface-container-high": "#272a31",
+                        "surface-variant": "#32353c",
+                        "surface-bright": "#363940"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "score-display": ["Montserrat"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "score-display-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "score-display": ["48px", { "lineHeight": "1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "score-display-mobile": ["36px", { "lineHeight": "1", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .live-glow {
+            filter: drop-shadow(0 0 4px #ffb4ab);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-lg flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-surface/80 border-b border-white/10 shadow-xl">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 max-w-container-max-width mx-auto">
+<div class="font-headline-lg text-headline-lg font-extrabold tracking-tighter text-primary dark:text-primary">CRICLIVE</div>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold" href="#">Live Scores</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold" href="#">Matches</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold" href="#">Teams</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-headline-md text-headline-md font-bold" href="#">News</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hover:bg-white/5 transition-all p-2 rounded-full active:scale-95 duration-200 text-primary dark:text-primary">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-24 md:pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto w-full flex flex-col gap-8">
+<!-- Category Navigation -->
+<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-caps text-label-caps whitespace-nowrap shadow-[0_0_10px_rgba(0,82,155,0.5)]">All News</button>
+<button class="px-4 py-2 rounded-full glass-panel text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps whitespace-nowrap transition-colors">Analysis</button>
+<button class="px-4 py-2 rounded-full glass-panel text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps whitespace-nowrap transition-colors">Interviews</button>
+<button class="px-4 py-2 rounded-full glass-panel text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps whitespace-nowrap transition-colors">Match Reports</button>
+<button class="px-4 py-2 rounded-full glass-panel text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps whitespace-nowrap transition-colors">Viral</button>
+</div>
+<!-- Featured Story Hero -->
+<section class="relative w-full h-[512px] md:h-[614px] rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)] group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A dramatic, high-contrast photograph of a cricket batsman mid-swing in a packed, floodlit stadium at night. The stadium lights create a brilliant halo effect. The color palette features deep blacks, stark whites, and intense vibrant blue accents consistent with a premium sports broadcast aesthetic. The mood is tense, energetic, and highly professional." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFY8DnMGk0Uiud_xQ5oga5OrsBIt_MvsMawjEThUmnRuwWRH-ap-lYudhcdF3_wVcArzOsUTjO70Xn-NdjpJlMxvYh7bHaR5ajO_d4_z4K81OS99AWlfenpv8JG97eyTqOqdf9Q7rSTthCjTtsXEW5sKyzwBtKIvsV0Gjv0gAEUVGJnWHWExaAZStM7s3eM3CE1tAy6kBjUYf7trlgIjJTgy8RgxhlBMSY6a54rPE6L_gLJkdEyBni_g')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/60 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6 md:p-12 flex flex-col gap-4 w-full md:w-2/3">
+<span class="inline-block px-3 py-1 bg-error/20 text-error rounded border border-error/50 font-label-caps text-label-caps self-start">Match Reports</span>
+<h1 class="font-headline-lg text-headline-lg md:text-[36px] md:leading-[44px] text-on-surface">The Final Over Drama: Kings Clinch Victory from the Jaws of Defeat</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant line-clamp-2 md:line-clamp-none">In a match that will be remembered for years, an incredible display of death bowling sealed a thrilling 3-run victory under the lights.</p>
+<div class="flex items-center gap-4 mt-2">
+<span class="font-data-mono text-data-mono text-primary">2 hours ago</span>
+<span class="font-data-mono text-data-mono text-outline">•</span>
+<span class="font-data-mono text-data-mono text-outline">By Rajat Sharma</span>
+</div>
+</div>
+</section>
+<!-- Masonry / Bento Grid News -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[250px]">
+<!-- Analysis Card - Spans 2 cols on md -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group cursor-pointer hover:bg-white/10 transition-colors md:col-span-8 row-span-2 relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity group-hover:opacity-60 transition-opacity duration-500" data-alt="A close-up, highly detailed shot of a cricket ball hitting the pitch, capturing the exact moment of impact with dust particles rising. High contrast lighting with deep shadows and sharp, crisp textures. A subtle overlay of glowing data points and trajectory lines in neon green and white, highlighting the technical analysis aspect of the sport." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7RIso91LOC4efCt4fZSvoy9ZV_KHfSKnGG4WrAhCy89qVgxdqjfBoSAlkCr3sebWV1-kGAhjTHScaum1S6DRIQ9gs2L76OLjj7MCVEVPmXXE6-sZg41WMrzHRVwIgm2Oms_3-0XsFFqnRxOJfKLNOCeVmyMVGh_PNYxeJwTMArFiTWIYl8EIoNkPJFiUiBQjYFWselCBvR5fT2zHOq23kRKUhMa9VL78Vc4FkAGVsm13McCT9QaCcSQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/80 to-transparent"></div>
+<div class="relative z-10 p-6 flex flex-col h-full justify-end w-full md:w-3/4">
+<span class="inline-block px-3 py-1 bg-secondary-container/20 text-secondary-fixed rounded border border-secondary-fixed/50 font-label-caps text-label-caps self-start mb-4">Analysis</span>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Decoding the Mystery Spinner: How Variations Are Changing the Middle Overs</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">A deep dive into pitch maps, release points, and the subtle changes in grip that are confusing even the most established top-order batsmen.</p>
+<div class="flex items-center gap-3">
+<span class="font-data-mono text-data-mono text-primary">4 hours ago</span>
+</div>
+</div>
+</article>
+<!-- Interview Card -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group cursor-pointer hover:bg-white/10 transition-colors md:col-span-4 row-span-2 relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-50 group-hover:scale-105 transition-all duration-700" data-alt="A moody, high-end portrait of an international cricket captain in a dark locker room setting. The lighting is cinematic, illuminating one side of his face while the rest falls into shadow. He wears a dark, technical athletic jacket. The background is a blurred, deep navy blue with subtle glowing accents. Professional, intimate, and intense." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAz3xr132sqdPG02Ci8NGbslO3X3J4DzutiEvpZBOnAzV7ngYLY530KXXk9ZxFzDyYjJqa2ZTVxo0kcCqK-3bra028eIiEouh-ypK1U6dut1mKMolN48se77CDIQxZPusMm4edQ6nMAdT8XKh95M_D8wASAHgMJyGVL-EPQWQC7S-PVgXPn_DprMxCU7JhWMNGIPmnJFmrEgjFhh_U24dvDjq4ED-0jdsh02i8WZb5GHyb7zyn9wlSWOg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+<div class="relative z-10 p-6 flex flex-col h-full justify-end">
+<span class="inline-block px-3 py-1 bg-tertiary-container/40 text-tertiary-fixed-dim rounded border border-tertiary-fixed-dim/50 font-label-caps text-label-caps self-start mb-2">Interviews</span>
+<h2 class="font-headline-md text-headline-md text-on-surface text-[18px] leading-tight mb-2">"Pressure is a Privilege" - Captain's Candid Chat Before the Finals</h2>
+<div class="flex items-center gap-2 mt-auto">
+<span class="font-data-mono text-data-mono text-primary">Yesterday</span>
+</div>
+</div>
+</article>
+<!-- Viral Card -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col p-6 group cursor-pointer hover:bg-white/10 transition-colors md:col-span-4 row-span-1 border-l-4 border-l-error">
+<span class="inline-block px-2 py-1 bg-error/10 text-error rounded font-label-caps text-label-caps self-start mb-3 live-glow">Viral</span>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[16px] leading-snug mb-2">Watch: Spectacular Boundary Save Stuns the Crowd</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex-grow">An acrobatic effort on the ropes goes viral across social platforms...</p>
+</article>
+<!-- Quick Read Card -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col p-6 group cursor-pointer hover:bg-white/10 transition-colors md:col-span-4 row-span-1">
+<span class="inline-block px-2 py-1 bg-surface-variant text-on-surface-variant rounded font-label-caps text-label-caps self-start mb-3">Team News</span>
+<h3 class="font-headline-md text-headline-md text-on-surface text-[16px] leading-snug mb-2">Injury Update: Star Pacer Ruled Out of the Series</h3>
+<div class="mt-auto flex justify-between items-center">
+<span class="font-data-mono text-data-mono text-outline">2 mins read</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</article>
+<!-- Stat Focus Card -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group cursor-pointer hover:bg-white/10 transition-colors md:col-span-4 row-span-1 relative bg-gradient-to-br from-primary-container/20 to-transparent">
+<div class="p-6 h-full flex flex-col justify-between">
+<div>
+<span class="inline-block px-2 py-1 bg-primary/20 text-primary rounded font-label-caps text-label-caps mb-2">Stat Focus</span>
+<div class="font-score-display text-score-display text-primary mb-1">10,000</div>
+<h3 class="font-headline-md text-headline-md text-[14px] text-on-surface-variant">Runs milestone reached in record time</h3>
+</div>
+</div>
+</article>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-margin-mobile pb-safe z-50 bg-surface-container/90 backdrop-blur-lg dark:bg-surface-container/90 rounded-t-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] transition-transform duration-300 ease-out">
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">Live</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="scoreboard">scoreboard</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">Scores</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary-fixed scale-110 active:bg-white/10 p-2 rounded-lg">
+<span class="material-symbols-outlined" data-icon="newspaper" style="font-variation-settings: 'FILL' 1;">newspaper</span>
+<span class="font-label-caps text-label-caps mt-1 text-[10px]">News</span>
+</button>
+</nav>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant flat py-12 px-margin-desktop flex flex-col items-center gap-6 mt-12 pb-24 md:pb-12">
+<div class="font-headline-md text-headline-md text-primary">CRICLIVE</div>
+<div class="flex flex-wrap justify-center gap-4 md:gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Contact Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Careers</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center">© 2024 CricLive Premium Broadcasting. All rights reserved.</p>
+</footer>
+</body></html>

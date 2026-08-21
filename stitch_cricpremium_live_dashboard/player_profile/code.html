@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Player Profile - CRICLIVE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Montserrat:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffe089",
+                      "tertiary-fixed-dim": "#71dc8a",
+                      "on-background": "#e1e2eb",
+                      "tertiary-container": "#005f2a",
+                      "on-surface-variant": "#c2c6d3",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#191c22",
+                      "on-primary": "#003060",
+                      "outline": "#8c919c",
+                      "primary-fixed-dim": "#a6c8ff",
+                      "surface-container-lowest": "#0b0e14",
+                      "inverse-surface": "#e1e2eb",
+                      "on-secondary-container": "#6e5700",
+                      "on-secondary": "#3d2f00",
+                      "outline-variant": "#424751",
+                      "secondary-container": "#fecc00",
+                      "primary-fixed": "#d5e3ff",
+                      "inverse-on-surface": "#2e3037",
+                      "on-tertiary-fixed": "#00210a",
+                      "on-tertiary-container": "#70db89",
+                      "secondary": "#ffecbf",
+                      "error-container": "#93000a",
+                      "on-error": "#690005",
+                      "surface": "#10131a",
+                      "on-tertiary-fixed-variant": "#005324",
+                      "tertiary-fixed": "#8ef9a4",
+                      "tertiary": "#71dc8a",
+                      "error": "#ffb4ab",
+                      "inverse-primary": "#1d5fa8",
+                      "primary-container": "#00529b",
+                      "surface-container-highest": "#32353c",
+                      "secondary-fixed-dim": "#f0c100",
+                      "on-secondary-fixed-variant": "#574500",
+                      "background": "#10131a",
+                      "on-primary-fixed-variant": "#004787",
+                      "on-primary-fixed": "#001c3b",
+                      "surface-tint": "#a6c8ff",
+                      "on-surface": "#e1e2eb",
+                      "on-tertiary": "#003916",
+                      "on-primary-container": "#a5c7ff",
+                      "primary": "#a6c8ff",
+                      "surface-dim": "#10131a",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-container": "#1d2026",
+                      "surface-container-high": "#272a31",
+                      "surface-variant": "#32353c",
+                      "surface-bright": "#363940"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1280px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "data-mono": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Montserrat"],
+                      "score-display": ["Montserrat"],
+                      "body-sm": ["Inter"],
+                      "headline-lg": ["Montserrat"],
+                      "score-display-mobile": ["Montserrat"]
+              },
+              "fontSize": {
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "data-mono": ["14px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "score-display": ["48px", {"lineHeight": "1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "score-display-mobile": ["36px", {"lineHeight": "1", "fontWeight": "800"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .zebra-row:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        .player-hero-gradient {
+            background: linear-gradient(180deg, rgba(0, 82, 155, 0.8) 0%, rgba(11, 14, 20, 1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased pb-20 md:pb-0 pt-16 font-body-lg text-body-lg">
+<!-- Top Navigation (Hidden on Mobile) -->
+<nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-surface/80 border-b border-white/10 shadow-xl h-16 justify-between items-center px-margin-desktop max-w-container-max-width mx-auto">
+<div class="font-headline-lg text-headline-lg font-extrabold tracking-tighter text-primary dark:text-primary">CRICLIVE</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all p-2 rounded" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all p-2 rounded" href="#">Live Scores</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all p-2 rounded" href="#">Matches</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all p-2 rounded" href="#">Teams</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all p-2 rounded" href="#">News</a>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-primary dark:text-primary text-2xl hover:bg-white/5 transition-all p-2 rounded cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop w-full flex flex-col gap-8 py-8">
+<!-- Player Header -->
+<section class="w-full rounded-xl overflow-hidden glass-panel relative player-hero-gradient h-[400px] flex items-end">
+<div class="absolute inset-0 z-0">
+<div class="bg-cover bg-center w-full h-full opacity-40 mix-blend-overlay" data-alt="A dramatic, high-contrast action shot of a professional cricket batsman in full gear, mid-swing. The background is a blurred stadium at night under bright floodlights, emphasizing the intense, high-stakes atmosphere. The lighting is cinematic, highlighting the player's focus and the dynamic motion. Deep blue and dark tones dominate the scene." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcJbFXmwHnJFFCzDp3EBcygskdqRry72WuQettvIp-uYzEtsAwd6HreN9VSDFLFQfe29mt6MWkIHs6gAsxI070fthxDu6X-tUxWrRWC0vioUzYmH1AkWbuWmsszDhSyemJnLt0HGx4DQgI2s6vGBjWAbp19ZVSd0oYmjp5lhtp33pYxP-GkpAOcVG-hsy9J6J7Xk2WqP_2Ap2iGuo29pmt9C0GXRTyt-_-k7LhHobFiDF7XXqrObvPlw')"></div>
+</div>
+<div class="relative z-10 w-full p-8 flex flex-col md:flex-row items-center md:items-end gap-6 pb-12">
+<div class="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-primary-container overflow-hidden shadow-[0_0_20px_rgba(0,82,155,0.6)]">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a rugged, focused male cricket player wearing a dark blue team jersey. The lighting is dramatic, coming from the side to highlight facial features and determination. The background is completely black to emphasize the subject." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtVaSzeapz1k0iWyIcTDewf-8zsGQ7PSMTCSrdQiWF0QXAQ7Oy-QDFmX7v08641L0uUE0FKNznOaMwitaHZImiXZ_hkmCJR0FlPxyRDfNEIg-ovSpw1Lh3e1OpSH6cGCHfGdzmDbXESDTJz6YetvvbMo79lc0kVLiSlnQ0_1gfizjKEFN2xNB7th44JQipe5RS_DVdD8Lcpzj-vZ8Pt2rPD5GlQKxKw2gq8ILhWvnEbyseTmDacSZmHA"/>
+</div>
+<div class="flex flex-col items-center md:items-start text-center md:text-left flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="px-3 py-1 bg-primary-container text-white font-label-caps text-label-caps rounded-full shadow-[0_0_10px_rgba(0,82,155,0.8)]">BATTER</span>
+<span class="px-3 py-1 glass-panel text-on-surface-variant font-label-caps text-label-caps rounded-full">INDIA</span>
+</div>
+<h1 class="font-score-display text-score-display-mobile md:text-score-display text-white mb-1">Virat Kohli</h1>
+<p class="font-headline-md text-headline-md text-primary">Right-Handed Batsman</p>
+</div>
+<div class="hidden md:flex flex-col gap-2 items-end">
+<div class="glass-panel px-6 py-4 rounded-lg text-right">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">ICC RANKING</div>
+<div class="font-score-display text-score-display text-secondary-fixed">#3</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">ODI Batting</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Overall Summary -->
+<div class="col-span-1 md:col-span-4 glass-panel rounded-xl p-6 flex flex-col gap-4">
+<h2 class="font-headline-md text-headline-md text-on-surface border-b border-white/10 pb-2">Career Summary</h2>
+<div class="flex justify-between items-center py-2 border-b border-white/5">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Matches</span>
+<span class="font-data-mono text-data-mono text-white text-lg">522</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-white/5">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Total Runs</span>
+<span class="font-data-mono text-data-mono text-secondary-fixed text-xl">26,733</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-white/5">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Centuries</span>
+<span class="font-data-mono text-data-mono text-tertiary-fixed text-lg">80</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Fifties</span>
+<span class="font-data-mono text-data-mono text-white text-lg">139</span>
+</div>
+</div>
+<!-- Detailed Formats Table -->
+<div class="col-span-1 md:col-span-8 glass-panel rounded-xl overflow-hidden flex flex-col">
+<div class="p-6 border-b border-white/10 bg-surface-container/50">
+<h2 class="font-headline-md text-headline-md text-on-surface">Batting Statistics</h2>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="font-label-caps text-label-caps text-on-surface-variant border-b border-white/10 bg-surface-container-low/50">
+<th class="p-4 py-3">Format</th>
+<th class="p-4 py-3 text-right">M</th>
+<th class="p-4 py-3 text-right">Inn</th>
+<th class="p-4 py-3 text-right">Runs</th>
+<th class="p-4 py-3 text-right">HS</th>
+<th class="p-4 py-3 text-right">Avg</th>
+<th class="p-4 py-3 text-right">SR</th>
+</tr>
+</thead>
+<tbody class="font-data-mono text-data-mono text-on-surface">
+<tr class="zebra-row border-b border-white/5 hover:bg-white/5 transition-colors">
+<td class="p-4 py-3 font-headline-md text-headline-md text-sm">Test</td>
+<td class="p-4 py-3 text-right text-on-surface-variant">113</td>
+<td class="p-4 py-3 text-right text-on-surface-variant">191</td>
+<td class="p-4 py-3 text-right text-white font-bold">8,848</td>
+<td class="p-4 py-3 text-right">254*</td>
+<td class="p-4 py-3 text-right text-secondary-fixed">49.15</td>
+<td class="p-4 py-3 text-right">55.56</td>
+</tr>
+<tr class="zebra-row border-b border-white/5 hover:bg-white/5 transition-colors">
+<td class="p-4 py-3 font-headline-md text-headline-md text-sm">ODI</td>
+<td class="p-4 py-3 text-right text-on-surface-variant">292</td>
+<td class="p-4 py-3 text-right text-on-surface-variant">280</td>
+<td class="p-4 py-3 text-right text-white font-bold">13,848</td>
+<td class="p-4 py-3 text-right">183</td>
+<td class="p-4 py-3 text-right text-secondary-fixed">58.67</td>
+<td class="p-4 py-3 text-right">93.58</td>
+</tr>
+<tr class="zebra-row hover:bg-white/5 transition-colors">
+<td class="p-4 py-3 font-headline-md text-headline-md text-sm">T20I</td>
+<td class="p-4 py-3 text-right text-on-surface-variant">117</td>
+<td class="p-4 py-3 text-right text-on-surface-variant">109</td>
+<td class="p-4 py-3 text-right text-white font-bold">4,037</td>
+<td class="p-4 py-3 text-right">122*</td>
+<td class="p-4 py-3 text-right text-secondary-fixed">51.75</td>
+<td class="p-4 py-3 text-right">138.15</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-margin-mobile pb-safe bg-surface-container/90 backdrop-blur-lg dark:bg-surface-container/90 z-50 rounded-t-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 transition-transform duration-300 ease-out p-2 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 transition-transform duration-300 ease-out p-2 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-2xl" data-icon="sensors">sensors</span>
+<span class="font-label-caps text-[10px] mt-1">Live</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary-container dark:text-secondary-fixed scale-110 active:bg-white/10 transition-transform duration-300 ease-out p-2 rounded-lg cursor-pointer relative">
+<div class="absolute -top-1 right-2 w-2 h-2 bg-error rounded-full animate-pulse shadow-[0_0_4px_rgba(255,180,171,0.8)]"></div>
+<span class="material-symbols-outlined text-2xl" data-icon="scoreboard" data-weight="fill" style="font-variation-settings: 'FILL' 1;">scoreboard</span>
+<span class="font-label-caps text-[10px] mt-1">Scores</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 transition-transform duration-300 ease-out p-2 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined text-2xl" data-icon="newspaper">newspaper</span>
+<span class="font-label-caps text-[10px] mt-1">News</span>
+</div>
+</nav>
+</body></html>

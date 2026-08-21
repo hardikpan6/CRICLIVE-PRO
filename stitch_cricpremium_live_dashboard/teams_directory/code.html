@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teams Directory - CRICLIVE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffe089",
+                        "tertiary-fixed-dim": "#71dc8a",
+                        "on-background": "#e1e2eb",
+                        "tertiary-container": "#005f2a",
+                        "on-surface-variant": "#c2c6d3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#191c22",
+                        "on-primary": "#003060",
+                        "outline": "#8c919c",
+                        "primary-fixed-dim": "#a6c8ff",
+                        "surface-container-lowest": "#0b0e14",
+                        "inverse-surface": "#e1e2eb",
+                        "on-secondary-container": "#6e5700",
+                        "on-secondary": "#3d2f00",
+                        "outline-variant": "#424751",
+                        "secondary-container": "#fecc00",
+                        "primary-fixed": "#d5e3ff",
+                        "inverse-on-surface": "#2e3037",
+                        "on-tertiary-fixed": "#00210a",
+                        "on-tertiary-container": "#70db89",
+                        "secondary": "#ffecbf",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "surface": "#10131a",
+                        "on-tertiary-fixed-variant": "#005324",
+                        "tertiary-fixed": "#8ef9a4",
+                        "tertiary": "#71dc8a",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#1d5fa8",
+                        "primary-container": "#00529b",
+                        "surface-container-highest": "#32353c",
+                        "secondary-fixed-dim": "#f0c100",
+                        "on-secondary-fixed-variant": "#574500",
+                        "background": "#10131a",
+                        "on-primary-fixed-variant": "#004787",
+                        "on-primary-fixed": "#001c3b",
+                        "surface-tint": "#a6c8ff",
+                        "on-surface": "#e1e2eb",
+                        "on-tertiary": "#003916",
+                        "on-primary-container": "#a5c7ff",
+                        "primary": "#a6c8ff",
+                        "surface-dim": "#10131a",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container": "#1d2026",
+                        "surface-container-high": "#272a31",
+                        "surface-variant": "#32353c",
+                        "surface-bright": "#363940"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1280px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "score-display": ["Montserrat"],
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "score-display-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "data-mono": ["14px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+                        "score-display": ["48px", { "lineHeight": "1", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "score-display-mobile": ["36px", { "lineHeight": "1", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b0e14; /* Deep navy base from guidelines */
+            color: #e1e2eb;
+            overflow-x: hidden;
+        }
+        
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        
+        /* Team Hover Accents - simulating inner glow/blend */
+        .team-card-india:hover {
+            box-shadow: inset 0 0 40px rgba(0, 82, 155, 0.3), 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(0, 82, 155, 0.5);
+        }
+        
+        .team-card-aus:hover {
+            box-shadow: inset 0 0 40px rgba(255, 204, 0, 0.2), 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(255, 204, 0, 0.5);
+        }
+        
+        .team-card-eng:hover {
+            box-shadow: inset 0 0 40px rgba(220, 20, 60, 0.2), 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(220, 20, 60, 0.5);
+        }
+        
+        .team-card-mi:hover {
+            box-shadow: inset 0 0 40px rgba(0, 75, 160, 0.3), 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(0, 75, 160, 0.5);
+        }
+
+        .team-card-csk:hover {
+            box-shadow: inset 0 0 40px rgba(255, 215, 0, 0.2), 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(255, 215, 0, 0.5);
+        }
+        
+        .team-card-rcb:hover {
+            box-shadow: inset 0 0 40px rgba(200, 16, 46, 0.2), 0 10px 30px rgba(0,0,0,0.5);
+            border-color: rgba(200, 16, 46, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (JSON Anchor) -->
+<header class="bg-surface/80 backdrop-blur-xl dark:bg-surface/80 fixed top-0 w-full z-50 border-b border-white/10 shadow-xl hidden md:block">
+<div class="flex justify-between items-center px-margin-desktop h-16 max-w-container-max-width mx-auto">
+<div class="font-headline-lg text-headline-lg font-extrabold tracking-tighter text-primary dark:text-primary">
+                CRICLIVE
+            </div>
+<nav class="flex items-center gap-6">
+<!-- Determining Active: Teams -->
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all px-2 py-1 rounded" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all px-2 py-1 rounded" href="#">Live Scores</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all px-2 py-1 rounded" href="#">Matches</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all px-2 rounded" href="#">Teams</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-md text-headline-md font-bold hover:bg-white/5 transition-all px-2 py-1 rounded" href="#">News</a>
+</nav>
+<div class="flex items-center">
+<button class="text-primary dark:text-primary hover:bg-white/5 transition-all p-2 rounded-full active:scale-95 duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-20 md:pt-24 pb-24 md:pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto w-full">
+<!-- Page Header -->
+<div class="mb-8 md:mb-12 pt-4">
+<h1 class="font-score-display-mobile md:font-score-display text-on-surface mb-2">Teams Directory</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Explore global national squads and elite franchise rosters. Real-time ICC rankings and comprehensive player statistics.</p>
+</div>
+<!-- Filter/Search Bar Area -->
+<div class="flex flex-col md:flex-row gap-4 mb-8 glass-card p-4 rounded-xl items-center justify-between">
+<div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-caps text-label-caps whitespace-nowrap border border-transparent shadow-[0_0_15px_rgba(0,82,155,0.4)]">ALL TEAMS</button>
+<button class="bg-surface-container text-on-surface-variant hover:text-on-surface px-6 py-2 rounded-full font-label-caps text-label-caps whitespace-nowrap border border-white/10 transition-colors">NATIONAL</button>
+<button class="bg-surface-container text-on-surface-variant hover:text-on-surface px-6 py-2 rounded-full font-label-caps text-label-caps whitespace-nowrap border border-white/10 transition-colors">FRANCHISE</button>
+</div>
+<div class="relative w-full md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size: 20px;">search</span>
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-full py-2 pl-10 pr-4 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container transition-all" placeholder="Search teams..." type="text"/>
+</div>
+</div>
+<!-- Teams Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+<!-- Card 1: India -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group team-card-india transition-all duration-300">
+<div class="h-32 bg-gradient-to-b from-primary-container/40 to-transparent relative p-6 flex items-start justify-between">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center border 2 border-white/10 shadow-lg overflow-hidden z-10 relative">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a circular cricket team logo emblem featuring a stylized tiger and a cricket ball in deep blue and vibrant orange. The aesthetic is modern, sharp, and highly polished, sitting on a dark premium UI background under studio lighting, creating a professional sports broadcast feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjsQ4ah713QDvoBkgNJAG5ACWjfwksC4GTJq6wt-K70wtvlteO0stYu1ZbCAtjNzXnwuUJuSWr3y0tNA-tB4eXS5EYAta9CVeb25jgGmlG_AIdQ-_5VqAlEpXUVPCNzVcEZDNaBx8N1S0dGul5RmMf3uERje04cTfXZAVo94nws4gcTNIqatTPwNGzN2uFH2cP1uybWCFV92B_ADVEWcLNmF3O7SYpfFoVX4Nu_DT0_NeOiQvne0KZiQ"/>
+</div>
+<div class="bg-surface-container/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed shadow-[0_0_8px_rgba(142,249,164,0.6)]"></span>
+<span class="font-data-mono text-data-mono text-on-surface">ICC #1</span>
+</div>
+</div>
+<div class="p-6 pt-0 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-1">India</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">National Men's Team</p>
+<div class="grid grid-cols-3 gap-2 mb-6">
+<div class="bg-surface-container-low rounded-lg p-2 text-center border border-white/5">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">TEST</div>
+<div class="font-data-mono text-data-mono text-primary">#1</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 text-center border border-white/5">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">ODI</div>
+<div class="font-data-mono text-data-mono text-primary">#1</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 text-center border border-white/5">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">T20I</div>
+<div class="font-data-mono text-data-mono text-primary">#1</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary-container hover:bg-primary-container/80 text-white font-headline-md text-body-sm py-3 rounded-lg transition-all duration-200 border border-primary/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] flex justify-center items-center gap-2 group-hover:shadow-[0_0_15px_rgba(0,82,155,0.5)]">
+                        View Squad
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Australia -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group team-card-aus transition-all duration-300">
+<div class="h-32 bg-gradient-to-b from-[#ffcc00]/20 to-transparent relative p-6 flex items-start justify-between">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center border 2 border-white/10 shadow-lg overflow-hidden z-10 relative">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a circular cricket team logo emblem featuring a stylized kangaroo and the southern cross stars in bright yellow and deep green. The aesthetic is modern, sharp, and highly polished, sitting on a dark premium UI background under studio lighting, creating a professional sports broadcast feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfSKzBTJ3GLIiRjDk63WfKlIbOxwVwt1lIpkQ4X5uzmUPk3IQleB23x4W_nkopsNqkIYBeABQNfn5KM8kwaP52qKdwv2XexlsqzYEtA61i6aRrQvz5k-DE4HYuNxabWP91WwbmnC8hgZTF59S--5nUcaboZ5Sra1Cou_-xn5LhU2feWj3kQovfHjzmDnxsolZheN-QGc817ImLUwuLt7gquOpcHUmJuz6SXInMvmuQnUNbg8BFQQoXxQ"/>
+</div>
+<div class="bg-surface-container/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container shadow-[0_0_8px_rgba(254,204,0,0.6)]"></span>
+<span class="font-data-mono text-data-mono text-on-surface">ICC #2</span>
+</div>
+</div>
+<div class="p-6 pt-0 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-1">Australia</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">National Men's Team</p>
+<div class="grid grid-cols-3 gap-2 mb-6">
+<div class="bg-surface-container-low rounded-lg p-2 text-center border border-white/5">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">TEST</div>
+<div class="font-data-mono text-data-mono text-secondary-fixed">#2</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 text-center border border-white/5">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">ODI</div>
+<div class="font-data-mono text-data-mono text-secondary-fixed">#2</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2 text-center border border-white/5">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">T20I</div>
+<div class="font-data-mono text-data-mono text-secondary-fixed">#2</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-high hover:bg-surface-variant text-on-surface font-headline-md text-body-sm py-3 rounded-lg transition-all duration-200 border border-white/10 flex justify-center items-center gap-2 group-hover:border-secondary-container/50">
+                        View Squad
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Mumbai Indians -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group team-card-mi transition-all duration-300">
+<div class="h-32 bg-gradient-to-b from-[#004ba0]/40 to-transparent relative p-6 flex items-start justify-between">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center border 2 border-white/10 shadow-lg overflow-hidden z-10 relative">
+<img class="w-full h-full object-cover" data-alt="A highly detailed close-up of a circular franchise cricket team logo emblem featuring a stylized spinning razor blade graphic in royal blue and gold. The aesthetic is modern, sharp, and highly polished, sitting on a dark premium UI background under studio lighting, creating a professional sports broadcast feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA85RMrWZgAm1LhxbR5Utek192iC3h0cq2acIzcM9VKEu69h7J7nnU9AXagkc_hGG5Xa5NsV6eGlZFwMGmYxF7BQFwt-Z_oNySzThtm53UAuIIvBbu2U5tPWCjRak68t9lEQshabEoyQ0xAxTZM4EhMmaQBRaXqWCxz_coL1jiYO89Rvkq-R5kr-qzR37wvYQ5GTcz5mGgcWguinmH0nLYQMpJ5kkZGKW9Lo8sNPTX4fNimBDxbWG_NUg"/>
+</div>
+<div class="bg-surface-container/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1 flex items-center gap-1">
+<span class="font-data-mono text-data-mono text-on-surface-variant">Franchise</span>
+</div>
+</div>
+<div class="p-6 pt-0 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-1">Mumbai Indians</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Indian Premier League</p>
+<div class="flex items-center gap-4 mb-6">
+<div class="flex-1 bg-surface-container-low rounded-lg p-3 border border-white/5 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" data-icon="emoji_events">emoji_events</span>
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">TITLES</div>
+<div class="font-data-mono text-data-mono text-on-surface">5 Championships</div>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-surface-container-high hover:bg-surface-variant text-on-surface font-headline-md text-body-sm py-3 rounded-lg transition-all duration-200 border border-white/10 flex justify-center items-center gap-2 group-hover:border-primary/50">
+                        View Squad
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (JSON Anchor - Mobile Only) -->
+<!-- Suppressed on desktop, active on mobile. Active tab: Teams (not in default JSON, but 'Scores' or custom logic applies. JSON has 'Home', 'Live', 'Scores', 'News'. I will map 'Teams' context to the general nav, perhaps highlight none or closest if strictly bound to JSON labels. JSON labels: ["Home", "Live", "Scores", "News"]. Since 'Teams' isn't there, no tab is strictly active based on the exact array, but I must follow logic. I will leave all inactive as it's a sub-destination not in the bottom nav JSON, OR render it as general browsing.) -->
+<nav class="bg-surface-container/90 backdrop-blur-lg dark:bg-surface-container/90 fixed bottom-0 w-full z-50 rounded-t-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-2 px-margin-mobile pb-safe transition-transform duration-300 ease-out">
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 rounded-lg p-1" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 rounded-lg p-1" href="#">
+<span class="material-symbols-outlined mb-1 text-error" style="font-variation-settings: 'FILL' 1;">sensors</span>
+<span class="font-label-caps text-label-caps">Live</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 rounded-lg p-1" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">scoreboard</span>
+<span class="font-label-caps text-label-caps">Scores</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:bg-white/10 rounded-lg p-1" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">newspaper</span>
+<span class="font-label-caps text-label-caps">News</span>
+</a>
+</nav>
+<!-- Footer (JSON Anchor) -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full border-t border-outline-variant w-full py-12 px-margin-desktop flex flex-col items-center gap-6 hidden md:flex mt-auto">
+<div class="font-headline-md text-headline-md text-primary">CRICLIVE</div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Contact Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-sm text-body-sm" href="#">Careers</a>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+            © 2024 CricLive Premium Broadcasting. All rights reserved.
+        </div>
+</footer>
+</body></html>
